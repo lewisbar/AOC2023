@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		305C0CEA2B19EDDB00168981 /* AOC2023_Day1.h in Headers */ = {isa = PBXBuildFile; fileRef = 305C0CE92B19EDDB00168981 /* AOC2023_Day1.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		305C0CF72B19EEA400168981 /* AOC2023_Day1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C0CF62B19EEA400168981 /* AOC2023_Day1Tests.swift */; };
 		305C0CF82B19EEA400168981 /* AOC2023_Day1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0CE62B19EDDB00168981 /* AOC2023_Day1.framework */; };
+		305C0CFF2B19F5C100168981 /* String+Day1Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C0CFE2B19F5C100168981 /* String+Day1Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,9 +24,9 @@
 
 /* Begin PBXFileReference section */
 		305C0CE62B19EDDB00168981 /* AOC2023_Day1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AOC2023_Day1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		305C0CE92B19EDDB00168981 /* AOC2023_Day1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AOC2023_Day1.h; sourceTree = "<group>"; };
 		305C0CF42B19EEA400168981 /* AOC2023_Day1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2023_Day1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		305C0CF62B19EEA400168981 /* AOC2023_Day1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2023_Day1Tests.swift; sourceTree = "<group>"; };
+		305C0CFE2B19F5C100168981 /* String+Day1Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Day1Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 		305C0CE82B19EDDB00168981 /* AOC2023-Day1 */ = {
 			isa = PBXGroup;
 			children = (
-				305C0CE92B19EDDB00168981 /* AOC2023_Day1.h */,
+				305C0CFE2B19F5C100168981 /* String+Day1Helpers.swift */,
 			);
 			path = "AOC2023-Day1";
 			sourceTree = "<group>";
@@ -89,7 +89,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				305C0CEA2B19EDDB00168981 /* AOC2023_Day1.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +143,7 @@
 				TargetAttributes = {
 					305C0CE52B19EDDB00168981 = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 					305C0CF32B19EEA400168981 = {
 						CreatedOnToolsVersion = 15.0;
@@ -191,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				305C0CFF2B19F5C100168981 /* String+Day1Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +341,7 @@
 		305C0CEE2B19EDDB00168981 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -364,6 +366,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -371,6 +374,7 @@
 		305C0CEF2B19EDDB00168981 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -402,6 +406,7 @@
 		305C0CFC2B19EEA400168981 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9SPL76B3GR;
@@ -417,6 +422,7 @@
 		305C0CFD2B19EEA400168981 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9SPL76B3GR;
