@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AOC2023_Day1
 
 @main
 struct AOC2023_SolutionsApp: App {

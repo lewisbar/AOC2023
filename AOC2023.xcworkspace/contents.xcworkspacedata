@@ -4,4 +4,7 @@
    <FileRef
       location = "group:AOC2023-Solutions/AOC2023-Solutions.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:AOC2023-Day1/AOC2023-Day1.xcodeproj">
+   </FileRef>
 </Workspace>
