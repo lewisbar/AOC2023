@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AOC2023_Day1
 
 struct ContentView: View {
     var body: some View {
@@ -13,7 +14,7 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("\(Day1Input.input.calibrationSum ?? 0)")
         }
         .padding()
     }
