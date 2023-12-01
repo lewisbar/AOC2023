@@ -6,25 +6,31 @@
 //
 
 import XCTest
-import AOC2023_Day1
+@testable import AOC2023_Day1
 
 final class AOC2023_Day1Tests: XCTestCase {
     func test_firstDigit_returnsfirstDigit() {
         let input = "pqr3stu8vwx"
 
-        XCTAssertEqual(input.firstDigit, "3")
+        let result = Day1.Part1.firstDigit(in: input)
+
+        XCTAssertEqual(result, "3")
     }
 
     func test_lastDigit_returnslastDigit() {
         let input = "pqr3stu8vwx"
 
-        XCTAssertEqual(input.lastDigit, "8")
+        let result = Day1.Part1.lastDigit(in: input)
+
+        XCTAssertEqual(result, "8")
     }
 
     func test_calibrationValue_returnsCombinedFirstAndLastDigits() {
         let input = "pqr3stu8vwx"
 
-        XCTAssertEqual(input.calibrationValue, 38)
+        let result = Day1.Part1.calibrationValue(in: input)
+
+        XCTAssertEqual(result, 38)
     }
 
     func test_calibrationSum_returnsSumOfCalibrationValues() {
@@ -35,6 +41,8 @@ final class AOC2023_Day1Tests: XCTestCase {
         treb7uchet
         """
 
-        XCTAssertEqual(input.calibrationSum, 142)
+        let result = Day1.Part1.calibrationSum(in: input)
+
+        XCTAssertEqual(result, 142)
     }
 }

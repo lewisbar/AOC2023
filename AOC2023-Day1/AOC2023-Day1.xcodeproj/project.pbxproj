@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		305C0CF72B19EEA400168981 /* AOC2023_Day1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C0CF62B19EEA400168981 /* AOC2023_Day1Tests.swift */; };
 		305C0CF82B19EEA400168981 /* AOC2023_Day1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0CE62B19EDDB00168981 /* AOC2023_Day1.framework */; };
-		305C0CFF2B19F5C100168981 /* String+Day1Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C0CFE2B19F5C100168981 /* String+Day1Helpers.swift */; };
+		305C0CFF2B19F5C100168981 /* Day1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C0CFE2B19F5C100168981 /* Day1.swift */; };
 		305C0D4A2B1A05E300168981 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305C0D492B1A05E300168981 /* Input.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +27,7 @@
 		305C0CE62B19EDDB00168981 /* AOC2023_Day1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AOC2023_Day1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		305C0CF42B19EEA400168981 /* AOC2023_Day1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOC2023_Day1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		305C0CF62B19EEA400168981 /* AOC2023_Day1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AOC2023_Day1Tests.swift; sourceTree = "<group>"; };
-		305C0CFE2B19F5C100168981 /* String+Day1Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Day1Helpers.swift"; sourceTree = "<group>"; };
+		305C0CFE2B19F5C100168981 /* Day1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day1.swift; sourceTree = "<group>"; };
 		305C0D492B1A05E300168981 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,7 +71,7 @@
 		305C0CE82B19EDDB00168981 /* AOC2023-Day1 */ = {
 			isa = PBXGroup;
 			children = (
-				305C0CFE2B19F5C100168981 /* String+Day1Helpers.swift */,
+				305C0CFE2B19F5C100168981 /* Day1.swift */,
 				305C0D492B1A05E300168981 /* Input.swift */,
 			);
 			path = "AOC2023-Day1";
@@ -195,7 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				305C0D4A2B1A05E300168981 /* Input.swift in Sources */,
-				305C0CFF2B19F5C100168981 /* String+Day1Helpers.swift in Sources */,
+				305C0CFF2B19F5C100168981 /* Day1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
