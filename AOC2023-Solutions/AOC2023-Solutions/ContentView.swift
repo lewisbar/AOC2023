@@ -17,6 +17,14 @@ struct ContentView: View {
         return "No solution"
     }
 
+    private var day1Part2: String {
+        let input = Day1Input.input
+        if let result = Day1.Part2.calibrationSum(in: input) {
+            return String(result)
+        }
+        return "No solution"
+    }
+
     var body: some View {
         VStack(spacing: 16) {
             Text("Day 1")
@@ -25,6 +33,10 @@ struct ContentView: View {
             HStack {
                 Text("Part 1:")
                 Text(day1Part1)
+            }
+            HStack {
+                Text("Part 2:")
+                Text(day1Part2)
             }
         }
         .padding()
