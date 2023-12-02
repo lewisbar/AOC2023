@@ -8,14 +8,6 @@
 import XCTest
 @testable import AOC2023_Day1
 
-public extension String {
-    func wordToInteger() -> Int? {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .spellOut
-        return  numberFormatter.number(from: self) as? Int
-    }
-}
-
 final class AOC2023_Day1Tests: XCTestCase {
 
     // MARK: Part 1
