@@ -98,4 +98,20 @@ final class AOC2023_Day1Tests: XCTestCase {
 
         XCTAssertEqual(result, 83)
     }
+
+    func test_calibrationSum_returnsSumOfCalibrationValuesForPart2() {
+        let input = """
+        two1nine
+        eightwothree
+        abcone2threexyz
+        xtwone3four
+        4nineeightseven2
+        zoneight234
+        7pqrstsixteen
+        """
+
+        let result = Day1.Part2.calibrationSum(in: input)
+
+        XCTAssertEqual(result, 281)
+    }
 }

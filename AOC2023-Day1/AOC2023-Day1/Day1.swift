@@ -39,6 +39,13 @@ public enum Day1 {
     }
 
     public enum Part2 {
+        public static func calibrationSum(in input: String) -> Int? {
+            input
+                .components(separatedBy: .newlines)
+                .compactMap { calibrationValue(in: $0) }
+                .reduce(0, +)
+        }
+        
         static func calibrationValue(in input: String) -> Int? {
             guard let firstDigit = firstDigit(in: input), let lastDigit = lastDigit(in: input) else {
                 return nil
