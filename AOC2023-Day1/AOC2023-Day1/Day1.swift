@@ -39,7 +39,12 @@ public enum Day1 {
     }
 
     public enum Part2 {
-        private static let digitPattern = /(zero|one|two|three|four|five|six|seven|eight|nine|[0-9])/
+        static func calibrationValue(in input: String) -> Int? {
+            guard let firstDigit = firstDigit(in: input), let lastDigit = lastDigit(in: input) else {
+                return nil
+            }
+            return Int(firstDigit + lastDigit)
+        }
 
         static func firstDigit(in input: String) -> String? {
             let foundNumbers = input.ranges(of: digitPattern)
@@ -62,6 +67,8 @@ public enum Day1 {
             guard let digit = String(lastMatch).intValue else { return nil }
             return String(digit)
         }
+
+        private static let digitPattern = /(zero|one|two|three|four|five|six|seven|eight|nine|[0-9])/
     }
 }
 

@@ -90,4 +90,12 @@ final class AOC2023_Day1Tests: XCTestCase {
 
         XCTAssertEqual(result, "3")
     }
+
+    func test_calibrationValue_returnsCombinedFirstAndLastDigitsForPart2() {
+        let input = "eightwothree"
+
+        let result = Day1.Part2.calibrationValue(in: input)
+
+        XCTAssertEqual(result, 83)
+    }
 }
