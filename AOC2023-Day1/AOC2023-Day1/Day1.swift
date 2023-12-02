@@ -37,4 +37,43 @@ public enum Day1 {
             return String(digit)
         }
     }
+
+    public enum Part2 {
+        private static let digitPattern = /(zero|one|two|three|four|five|six|seven|eight|nine|[0-9])/
+
+        static func firstDigit(in input: String) -> String? {
+            let foundNumbers = input.ranges(of: digitPattern)
+            guard let firstIndex = foundNumbers.first else { return nil }
+            let firstMatch = input[firstIndex]
+            if let numericDigit = Int(firstMatch) {
+                return String(numericDigit)
+            }
+            guard let digit = String(firstMatch).intValue else { return nil }
+            return String(digit)
+        }
+
+        static func lastDigit(in input: String) -> String? {
+            let foundNumbers = input.ranges(of: digitPattern)
+            guard let lastIndex = foundNumbers.reversed().first else { return nil }
+            let lastMatch = input[lastIndex]
+            if let numericDigit = Int(lastMatch) {
+                return String(numericDigit)
+            }
+            guard let digit = String(lastMatch).intValue else { return nil }
+            return String(digit)
+        }
+    }
+}
+
+private extension String {
+    private static let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en")
+        formatter.numberStyle = .spellOut
+        return formatter
+    }()
+
+    var intValue: Int? {
+        Self.numberFormatter.number(from: self) as? Int
+    }
 }
