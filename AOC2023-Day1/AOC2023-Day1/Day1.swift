@@ -65,17 +65,20 @@ public enum Day1 {
         }
 
         static func lastDigit(in input: String) -> String? {
-            let foundNumbers = input.ranges(of: digitPattern)
-            guard let lastIndex = foundNumbers.reversed().first else { return nil }
-            let lastMatch = input[lastIndex]
-            if let numericDigit = Int(lastMatch) {
+            let reversedInput = String(input.reversed())
+
+            let foundNumbers = reversedInput.ranges(of: reversedDigitPattern)
+            guard let firstIndex = foundNumbers.first else { return nil }
+            let firstMatch = String(reversedInput[firstIndex].reversed())
+            if let numericDigit = Int(firstMatch) {
                 return String(numericDigit)
             }
-            guard let digit = String(lastMatch).intValue else { return nil }
+            guard let digit = String(firstMatch).intValue else { return nil }
             return String(digit)
         }
 
         private static let digitPattern = /(zero|one|two|three|four|five|six|seven|eight|nine|[0-9])/
+        private static let reversedDigitPattern = /(orez|eno|owt|eerht|ruof|evif|xis|neves|thgie|enin|[0-9])/
     }
 }
 

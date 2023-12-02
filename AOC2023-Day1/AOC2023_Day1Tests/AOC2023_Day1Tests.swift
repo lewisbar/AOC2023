@@ -91,6 +91,14 @@ final class AOC2023_Day1Tests: XCTestCase {
         XCTAssertEqual(result, 83)
     }
 
+    func test_calibrationValue_returnsCombinedFirstAndLastDigitsForPart2WithOverlappingNumbers() {
+        let input = "sevenine"
+
+        let result = Day1.Part2.calibrationValue(in: input)
+
+        XCTAssertEqual(result, 79)
+    }
+
     func test_calibrationSum_returnsSumOfCalibrationValuesForPart2() {
         let input = """
         two1nine
