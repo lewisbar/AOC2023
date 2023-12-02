@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AOC2023_Day1
+import AOC2023_Day2
 
 struct ContentView: View {
     private var day1Part1: String {

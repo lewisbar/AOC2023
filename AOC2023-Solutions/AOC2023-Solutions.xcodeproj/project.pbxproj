@@ -13,6 +13,8 @@
 		305C0D3E2B19FA2100168981 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305C0D3D2B19FA2100168981 /* Preview Assets.xcassets */; };
 		305C0D462B19FCEF00168981 /* AOC2023_Day1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0D452B19FCEF00168981 /* AOC2023_Day1.framework */; };
 		305C0D472B19FCEF00168981 /* AOC2023_Day1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0D452B19FCEF00168981 /* AOC2023_Day1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		305C0D602B1BEB8900168981 /* AOC2023_Day2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */; };
+		305C0D612B1BEB8900168981 /* AOC2023_Day2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +25,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				305C0D472B19FCEF00168981 /* AOC2023_Day1.framework in Embed Frameworks */,
+				305C0D612B1BEB8900168981 /* AOC2023_Day2.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -36,6 +39,7 @@
 		305C0D3A2B19FA2100168981 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		305C0D3D2B19FA2100168981 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		305C0D452B19FCEF00168981 /* AOC2023_Day1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AOC2023_Day1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AOC2023_Day2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				305C0D462B19FCEF00168981 /* AOC2023_Day1.framework in Frameworks */,
+				305C0D602B1BEB8900168981 /* AOC2023_Day2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +94,7 @@
 		305C0D442B19FCEF00168981 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */,
 				305C0D452B19FCEF00168981 /* AOC2023_Day1.framework */,
 			);
 			name = Frameworks;
@@ -316,6 +322,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.lewisbar.AOC2023-Solutions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,6 +353,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.lewisbar.AOC2023-Solutions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
