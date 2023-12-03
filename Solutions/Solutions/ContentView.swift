@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  AOC2023-Solutions
+//  Solutions
 //
 //  Created by LennartWisbar on 01.12.23.
 //

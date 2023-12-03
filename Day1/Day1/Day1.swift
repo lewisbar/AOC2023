@@ -1,6 +1,6 @@
 //
 //  Day1.swift
-//  AOC2023-Day1
+//  Day1
 //
 //  Created by LennartWisbar on 01.12.23.
 //

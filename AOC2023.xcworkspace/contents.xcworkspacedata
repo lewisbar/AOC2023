@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:AOC2023-Solutions/AOC2023-Solutions.xcodeproj">
+      location = "group:Solutions/Solutions.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Day2/Day2.xcodeproj">
