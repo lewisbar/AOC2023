@@ -192,4 +192,37 @@ final class AOC2023_Day2Tests: XCTestCase {
 
         XCTAssertEqual(result, 48)
     }
+
+    func test_sumOfPowerOfMinimumCubeSets_returnsCorrectValue() {
+        let games = [
+            Day2.Game(id: 1, rounds: [
+                Day2.Round(red: 4, green: 0, blue: 3),
+                Day2.Round(red: 1, green: 2, blue: 6),
+                Day2.Round(red: 0, green: 2, blue: 0)
+            ]),
+            Day2.Game(id: 2, rounds: [
+                Day2.Round(red: 0, green: 2, blue: 1),
+                Day2.Round(red: 1, green: 3, blue: 4),
+                Day2.Round(red: 0, green: 1, blue: 1)
+            ]),
+            Day2.Game(id: 3, rounds: [
+                Day2.Round(red: 20, green: 8, blue: 6),
+                Day2.Round(red: 4, green: 13, blue: 5),
+                Day2.Round(red: 1, green: 5, blue: 0)
+            ]),
+            Day2.Game(id: 4, rounds: [
+                Day2.Round(red: 3, green: 1, blue: 6),
+                Day2.Round(red: 6, green: 3, blue: 0),
+                Day2.Round(red: 14, green: 3, blue: 15)
+            ]),
+            Day2.Game(id: 5, rounds: [
+                Day2.Round(red: 6, green: 3, blue: 1),
+                Day2.Round(red: 1, green: 2, blue: 2)
+            ]),
+        ]
+
+        let result = Day2.Part2.sumOfPowerOfMinimumCubeSets(for: games)
+
+        XCTAssertEqual(result, 2286)
+    }
 }

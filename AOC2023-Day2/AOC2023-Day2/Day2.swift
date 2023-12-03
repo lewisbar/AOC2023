@@ -73,6 +73,13 @@ public enum Day2 {
     }
 
     public enum Part2 {
+        static func sumOfPowerOfMinimumCubeSets(for games: [Game]) -> Int {
+            games
+                .map(minimumCubeSet)
+                .map(power)
+                .reduce(0, +)
+        }
+
         static func power(of round: Round) -> Int {
             round.red * round.green * round.blue
         }
