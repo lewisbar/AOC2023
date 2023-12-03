@@ -71,4 +71,20 @@ public enum Day2 {
             return Game(id: id, rounds: rounds)
         }
     }
+
+    public enum Part2 {
+        static func minimumCubeSet(for game: Game) -> Round {
+            var red = 0
+            var green = 0
+            var blue = 0
+
+            for round in game.rounds {
+                red = max(red, round.red)
+                green = max(green, round.green)
+                blue = max(blue, round.blue)
+            }
+
+            return Round(red: red, green: green, blue: blue)
+        }
+    }
 }

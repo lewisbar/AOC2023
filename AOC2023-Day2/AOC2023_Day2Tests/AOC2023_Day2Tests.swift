@@ -9,6 +9,9 @@ import XCTest
 @testable import AOC2023_Day2
 
 final class AOC2023_Day2Tests: XCTestCase {
+
+    // MARK: - Part 1
+
     func test_parseLine_createsGameModel() {
         let input = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"
 
@@ -164,5 +167,21 @@ final class AOC2023_Day2Tests: XCTestCase {
         let result = Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
 
         XCTAssertEqual(result, 8)
+    }
+
+    // MARK: - Part 2
+
+    func test_minimumCubeSet_returnsCorrectColorCounts() {
+        let game = Day2.Game(id: 1, rounds: [
+            Day2.Round(red: 4, green: 0, blue: 3),
+            Day2.Round(red: 1, green: 2, blue: 6),
+            Day2.Round(red: 0, green: 2, blue: 0)
+        ])
+
+        let result = Day2.Part2.minimumCubeSet(for: game)
+
+        let expectedResult = Day2.Round(red: 4, green: 2, blue: 6)
+
+        XCTAssertEqual(result, expectedResult)
     }
 }
