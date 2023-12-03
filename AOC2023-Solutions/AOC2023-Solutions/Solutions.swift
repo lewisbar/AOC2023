@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import AOC2023_Day1
+import Day1
 import Day2
 
 enum Solutions {
@@ -29,7 +29,7 @@ enum Solutions {
 
         static var part1: String {
             let input = Day1Input.input
-            if let result = AOC2023_Day1.Day1.Part1.calibrationSum(in: input) {
+            if let result = Day1.Part1.calibrationSum(in: input) {
                 return String(result)
             }
             return "No solution"
@@ -37,7 +37,7 @@ enum Solutions {
 
         static var part2: String {
             let input = Day1Input.input
-            if let result = AOC2023_Day1.Day1.Part2.calibrationSum(in: input) {
+            if let result = Day1.Part2.calibrationSum(in: input) {
                 return String(result)
             }
             return "No solution"

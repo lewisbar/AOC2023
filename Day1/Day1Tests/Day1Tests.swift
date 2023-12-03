@@ -1,12 +1,12 @@
 //
-//  AOC2023_Day1Tests.swift
-//  AOC2023_Day1Tests
+//  Day1Tests.swift
+//  Day1Tests
 //
 //  Created by LennartWisbar on 01.12.23.
 //
 
 import XCTest
-@testable import AOC2023_Day1
+@testable import Day1
 
 final class AOC2023_Day1Tests: XCTestCase {
 
@@ -15,7 +15,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_firstDigit_returnsfirstDigit() {
         let input = "pqr3stu8vwx"
 
-        let result = Day1.Part1.firstDigit(in: input)
+        let result = Part1.firstDigit(in: input)
 
         XCTAssertEqual(result, "3")
     }
@@ -23,7 +23,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_lastDigit_returnslastDigit() {
         let input = "pqr3stu8vwx"
 
-        let result = Day1.Part1.lastDigit(in: input)
+        let result = Part1.lastDigit(in: input)
 
         XCTAssertEqual(result, "8")
     }
@@ -31,7 +31,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_calibrationValue_returnsCombinedFirstAndLastDigits() {
         let input = "pqr3stu8vwx"
 
-        let result = Day1.Part1.calibrationValue(in: input)
+        let result = Part1.calibrationValue(in: input)
 
         XCTAssertEqual(result, 38)
     }
@@ -44,7 +44,7 @@ final class AOC2023_Day1Tests: XCTestCase {
         treb7uchet
         """
 
-        let result = Day1.Part1.calibrationSum(in: input)
+        let result = Part1.calibrationSum(in: input)
 
         XCTAssertEqual(result, 142)
     }
@@ -54,7 +54,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_firstDigit_returnsFirstSpelledOutNumber() {
         let input = "eightwothree"
 
-        let result = Day1.Part2.firstDigit(in: input)
+        let result = Part2.firstDigit(in: input)
 
         XCTAssertEqual(result, "8")
     }
@@ -62,7 +62,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_lastDigit_returnsLastSpelledOutNumber() {
         let input = "eightwothree"
 
-        let result = Day1.Part2.lastDigit(in: input)
+        let result = Part2.lastDigit(in: input)
 
         XCTAssertEqual(result, "3")
     }
@@ -70,7 +70,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_firstDigit_returnsFirstNumericNumber() {
         let input = "8wothree"
 
-        let result = Day1.Part2.firstDigit(in: input)
+        let result = Part2.firstDigit(in: input)
 
         XCTAssertEqual(result, "8")
     }
@@ -78,7 +78,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_lastDigit_returnsLastNumericNumber() {
         let input = "eightwo3"
 
-        let result = Day1.Part2.lastDigit(in: input)
+        let result = Part2.lastDigit(in: input)
 
         XCTAssertEqual(result, "3")
     }
@@ -86,7 +86,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_calibrationValue_returnsCombinedFirstAndLastDigitsForPart2() {
         let input = "eightwothree"
 
-        let result = Day1.Part2.calibrationValue(in: input)
+        let result = Part2.calibrationValue(in: input)
 
         XCTAssertEqual(result, 83)
     }
@@ -94,7 +94,7 @@ final class AOC2023_Day1Tests: XCTestCase {
     func test_calibrationValue_returnsCombinedFirstAndLastDigitsForPart2WithOverlappingNumbers() {
         let input = "sevenine"
 
-        let result = Day1.Part2.calibrationValue(in: input)
+        let result = Part2.calibrationValue(in: input)
 
         XCTAssertEqual(result, 79)
     }
@@ -110,7 +110,7 @@ final class AOC2023_Day1Tests: XCTestCase {
         7pqrstsixteen
         """
 
-        let result = Day1.Part2.calibrationSum(in: input)
+        let result = Part2.calibrationSum(in: input)
 
         XCTAssertEqual(result, 281)
     }
