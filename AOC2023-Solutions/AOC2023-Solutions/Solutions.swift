@@ -46,12 +46,18 @@ enum Solutions {
 
     private enum Day2 {
         static var summary: DaySummary {
-            DaySummary(id: "2", solution1: part1, solution2: "none yet")
+            DaySummary(id: "2", solution1: part1, solution2: part2)
         }
 
         static var part1: String {
             let input = Day2Input.input
             let result = AOC2023_Day2.Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
+            return String(result)
+        }
+
+        static var part2: String {
+            let input = Day2Input.input
+            let result = AOC2023_Day2.Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
             return String(result)
         }
     }
