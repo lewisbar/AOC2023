@@ -184,4 +184,12 @@ final class AOC2023_Day2Tests: XCTestCase {
 
         XCTAssertEqual(result, expectedResult)
     }
+
+    func test_power_returnsPowerOfColorValues() {
+        let round = Day2.Round(red: 4, green: 2, blue: 6)
+
+        let result = Day2.Part2.power(of: round)
+
+        XCTAssertEqual(result, 48)
+    }
 }
