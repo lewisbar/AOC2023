@@ -73,6 +73,11 @@ public enum Day2 {
     }
 
     public enum Part2 {
+        public static func sumOfPowerOfMinimumCubeSets(for input: String) -> Int {
+            let games = Part1.parseLines(input)
+            return sumOfPowerOfMinimumCubeSets(for: games)
+        }
+
         static func sumOfPowerOfMinimumCubeSets(for games: [Game]) -> Int {
             games
                 .map(minimumCubeSet)
