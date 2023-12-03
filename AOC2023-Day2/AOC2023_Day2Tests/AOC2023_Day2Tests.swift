@@ -15,12 +15,12 @@ final class AOC2023_Day2Tests: XCTestCase {
     func test_parseLine_createsGameModel() {
         let input = "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"
 
-        let result = Day2.Part1.parseLine(input)
+        let result = Part1.parseLine(input)
 
-        let expectedResult = Day2.Game(id: 1, rounds: [
-            Day2.Round(red: 4, green: 0, blue: 3),
-            Day2.Round(red: 1, green: 2, blue: 6),
-            Day2.Round(red: 0, green: 2, blue: 0)
+        let expectedResult = Game(id: 1, rounds: [
+            Round(red: 4, green: 0, blue: 3),
+            Round(red: 1, green: 2, blue: 6),
+            Round(red: 0, green: 2, blue: 0)
         ])
 
         XCTAssertEqual(result, expectedResult)
@@ -35,32 +35,32 @@ final class AOC2023_Day2Tests: XCTestCase {
         Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
         """
 
-        let result = Day2.Part1.parseLines(input)
+        let result = Part1.parseLines(input)
 
         let expectedResult = [
-            Day2.Game(id: 1, rounds: [
-                Day2.Round(red: 4, green: 0, blue: 3),
-                Day2.Round(red: 1, green: 2, blue: 6),
-                Day2.Round(red: 0, green: 2, blue: 0)
+            Game(id: 1, rounds: [
+                Round(red: 4, green: 0, blue: 3),
+                Round(red: 1, green: 2, blue: 6),
+                Round(red: 0, green: 2, blue: 0)
             ]),
-            Day2.Game(id: 2, rounds: [
-                Day2.Round(red: 0, green: 2, blue: 1),
-                Day2.Round(red: 1, green: 3, blue: 4),
-                Day2.Round(red: 0, green: 1, blue: 1)
+            Game(id: 2, rounds: [
+                Round(red: 0, green: 2, blue: 1),
+                Round(red: 1, green: 3, blue: 4),
+                Round(red: 0, green: 1, blue: 1)
             ]),
-            Day2.Game(id: 3, rounds: [
-                Day2.Round(red: 20, green: 8, blue: 6),
-                Day2.Round(red: 4, green: 13, blue: 5),
-                Day2.Round(red: 1, green: 5, blue: 0)
+            Game(id: 3, rounds: [
+                Round(red: 20, green: 8, blue: 6),
+                Round(red: 4, green: 13, blue: 5),
+                Round(red: 1, green: 5, blue: 0)
             ]),
-            Day2.Game(id: 4, rounds: [
-                Day2.Round(red: 3, green: 1, blue: 6),
-                Day2.Round(red: 6, green: 3, blue: 0),
-                Day2.Round(red: 14, green: 3, blue: 15)
+            Game(id: 4, rounds: [
+                Round(red: 3, green: 1, blue: 6),
+                Round(red: 6, green: 3, blue: 0),
+                Round(red: 14, green: 3, blue: 15)
             ]),
-            Day2.Game(id: 5, rounds: [
-                Day2.Round(red: 6, green: 3, blue: 1),
-                Day2.Round(red: 1, green: 2, blue: 2)
+            Game(id: 5, rounds: [
+                Round(red: 6, green: 3, blue: 1),
+                Round(red: 1, green: 2, blue: 2)
             ]),
         ]
 
@@ -69,50 +69,50 @@ final class AOC2023_Day2Tests: XCTestCase {
 
     func test_possibleGames_returnsCorrectGames() {
         let games = [
-            Day2.Game(id: 1, rounds: [
-                Day2.Round(red: 4, green: 0, blue: 3),
-                Day2.Round(red: 1, green: 2, blue: 6),
-                Day2.Round(red: 0, green: 2, blue: 0)
+            Game(id: 1, rounds: [
+                Round(red: 4, green: 0, blue: 3),
+                Round(red: 1, green: 2, blue: 6),
+                Round(red: 0, green: 2, blue: 0)
             ]),
-            Day2.Game(id: 2, rounds: [
-                Day2.Round(red: 0, green: 2, blue: 1),
-                Day2.Round(red: 1, green: 3, blue: 4),
-                Day2.Round(red: 0, green: 1, blue: 1)
+            Game(id: 2, rounds: [
+                Round(red: 0, green: 2, blue: 1),
+                Round(red: 1, green: 3, blue: 4),
+                Round(red: 0, green: 1, blue: 1)
             ]),
-            Day2.Game(id: 3, rounds: [
-                Day2.Round(red: 20, green: 8, blue: 6),
-                Day2.Round(red: 4, green: 13, blue: 5),
-                Day2.Round(red: 1, green: 5, blue: 0)
+            Game(id: 3, rounds: [
+                Round(red: 20, green: 8, blue: 6),
+                Round(red: 4, green: 13, blue: 5),
+                Round(red: 1, green: 5, blue: 0)
             ]),
-            Day2.Game(id: 4, rounds: [
-                Day2.Round(red: 3, green: 1, blue: 6),
-                Day2.Round(red: 6, green: 3, blue: 0),
-                Day2.Round(red: 14, green: 3, blue: 15)
+            Game(id: 4, rounds: [
+                Round(red: 3, green: 1, blue: 6),
+                Round(red: 6, green: 3, blue: 0),
+                Round(red: 14, green: 3, blue: 15)
             ]),
-            Day2.Game(id: 5, rounds: [
-                Day2.Round(red: 6, green: 3, blue: 1),
-                Day2.Round(red: 1, green: 2, blue: 2)
+            Game(id: 5, rounds: [
+                Round(red: 6, green: 3, blue: 1),
+                Round(red: 1, green: 2, blue: 2)
             ]),
         ]
 
-        let cubeSet = Day2.Round(red: 12, green: 13, blue: 14)
+        let cubeSet = Round(red: 12, green: 13, blue: 14)
 
-        let result = Day2.Part1.possibleGames(outOf: games, for: cubeSet)
+        let result = Part1.possibleGames(outOf: games, for: cubeSet)
 
         let expectedResult = [
-            Day2.Game(id: 1, rounds: [
-                Day2.Round(red: 4, green: 0, blue: 3),
-                Day2.Round(red: 1, green: 2, blue: 6),
-                Day2.Round(red: 0, green: 2, blue: 0)
+            Game(id: 1, rounds: [
+                Round(red: 4, green: 0, blue: 3),
+                Round(red: 1, green: 2, blue: 6),
+                Round(red: 0, green: 2, blue: 0)
             ]),
-            Day2.Game(id: 2, rounds: [
-                Day2.Round(red: 0, green: 2, blue: 1),
-                Day2.Round(red: 1, green: 3, blue: 4),
-                Day2.Round(red: 0, green: 1, blue: 1)
+            Game(id: 2, rounds: [
+                Round(red: 0, green: 2, blue: 1),
+                Round(red: 1, green: 3, blue: 4),
+                Round(red: 0, green: 1, blue: 1)
             ]),
-            Day2.Game(id: 5, rounds: [
-                Day2.Round(red: 6, green: 3, blue: 1),
-                Day2.Round(red: 1, green: 2, blue: 2)
+            Game(id: 5, rounds: [
+                Round(red: 6, green: 3, blue: 1),
+                Round(red: 1, green: 2, blue: 2)
             ]),
         ]
 
@@ -122,35 +122,35 @@ final class AOC2023_Day2Tests: XCTestCase {
 
     func test_sumOfPossibleIDs_returnsCorrectSum() {
         let games = [
-            Day2.Game(id: 1, rounds: [
-                Day2.Round(red: 4, green: 0, blue: 3),
-                Day2.Round(red: 1, green: 2, blue: 6),
-                Day2.Round(red: 0, green: 2, blue: 0)
+            Game(id: 1, rounds: [
+                Round(red: 4, green: 0, blue: 3),
+                Round(red: 1, green: 2, blue: 6),
+                Round(red: 0, green: 2, blue: 0)
             ]),
-            Day2.Game(id: 2, rounds: [
-                Day2.Round(red: 0, green: 2, blue: 1),
-                Day2.Round(red: 1, green: 3, blue: 4),
-                Day2.Round(red: 0, green: 1, blue: 1)
+            Game(id: 2, rounds: [
+                Round(red: 0, green: 2, blue: 1),
+                Round(red: 1, green: 3, blue: 4),
+                Round(red: 0, green: 1, blue: 1)
             ]),
-            Day2.Game(id: 3, rounds: [
-                Day2.Round(red: 20, green: 8, blue: 6),
-                Day2.Round(red: 4, green: 13, blue: 5),
-                Day2.Round(red: 1, green: 5, blue: 0)
+            Game(id: 3, rounds: [
+                Round(red: 20, green: 8, blue: 6),
+                Round(red: 4, green: 13, blue: 5),
+                Round(red: 1, green: 5, blue: 0)
             ]),
-            Day2.Game(id: 4, rounds: [
-                Day2.Round(red: 3, green: 1, blue: 6),
-                Day2.Round(red: 6, green: 3, blue: 0),
-                Day2.Round(red: 14, green: 3, blue: 15)
+            Game(id: 4, rounds: [
+                Round(red: 3, green: 1, blue: 6),
+                Round(red: 6, green: 3, blue: 0),
+                Round(red: 14, green: 3, blue: 15)
             ]),
-            Day2.Game(id: 5, rounds: [
-                Day2.Round(red: 6, green: 3, blue: 1),
-                Day2.Round(red: 1, green: 2, blue: 2)
+            Game(id: 5, rounds: [
+                Round(red: 6, green: 3, blue: 1),
+                Round(red: 1, green: 2, blue: 2)
             ]),
         ]
 
-        let cubeSet = Day2.Round(red: 12, green: 13, blue: 14)
+        let cubeSet = Round(red: 12, green: 13, blue: 14)
 
-        let result = Day2.Part1.sumOfPossibleIDs(outOf: games, for: cubeSet)
+        let result = Part1.sumOfPossibleIDs(outOf: games, for: cubeSet)
 
         XCTAssertEqual(result, 8)
     }
@@ -164,7 +164,7 @@ final class AOC2023_Day2Tests: XCTestCase {
         Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
         """
 
-        let result = Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
+        let result = Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
 
         XCTAssertEqual(result, 8)
     }
@@ -172,56 +172,56 @@ final class AOC2023_Day2Tests: XCTestCase {
     // MARK: - Part 2
 
     func test_minimumCubeSet_returnsCorrectColorCounts() {
-        let game = Day2.Game(id: 1, rounds: [
-            Day2.Round(red: 4, green: 0, blue: 3),
-            Day2.Round(red: 1, green: 2, blue: 6),
-            Day2.Round(red: 0, green: 2, blue: 0)
+        let game = Game(id: 1, rounds: [
+            Round(red: 4, green: 0, blue: 3),
+            Round(red: 1, green: 2, blue: 6),
+            Round(red: 0, green: 2, blue: 0)
         ])
 
-        let result = Day2.Part2.minimumCubeSet(for: game)
+        let result = Part2.minimumCubeSet(for: game)
 
-        let expectedResult = Day2.Round(red: 4, green: 2, blue: 6)
+        let expectedResult = Round(red: 4, green: 2, blue: 6)
 
         XCTAssertEqual(result, expectedResult)
     }
 
     func test_power_returnsPowerOfColorValues() {
-        let round = Day2.Round(red: 4, green: 2, blue: 6)
+        let round = Round(red: 4, green: 2, blue: 6)
 
-        let result = Day2.Part2.power(of: round)
+        let result = Part2.power(of: round)
 
         XCTAssertEqual(result, 48)
     }
 
     func test_sumOfPowerOfMinimumCubeSets_returnsCorrectValue() {
         let games = [
-            Day2.Game(id: 1, rounds: [
-                Day2.Round(red: 4, green: 0, blue: 3),
-                Day2.Round(red: 1, green: 2, blue: 6),
-                Day2.Round(red: 0, green: 2, blue: 0)
+            Game(id: 1, rounds: [
+                Round(red: 4, green: 0, blue: 3),
+                Round(red: 1, green: 2, blue: 6),
+                Round(red: 0, green: 2, blue: 0)
             ]),
-            Day2.Game(id: 2, rounds: [
-                Day2.Round(red: 0, green: 2, blue: 1),
-                Day2.Round(red: 1, green: 3, blue: 4),
-                Day2.Round(red: 0, green: 1, blue: 1)
+            Game(id: 2, rounds: [
+                Round(red: 0, green: 2, blue: 1),
+                Round(red: 1, green: 3, blue: 4),
+                Round(red: 0, green: 1, blue: 1)
             ]),
-            Day2.Game(id: 3, rounds: [
-                Day2.Round(red: 20, green: 8, blue: 6),
-                Day2.Round(red: 4, green: 13, blue: 5),
-                Day2.Round(red: 1, green: 5, blue: 0)
+            Game(id: 3, rounds: [
+                Round(red: 20, green: 8, blue: 6),
+                Round(red: 4, green: 13, blue: 5),
+                Round(red: 1, green: 5, blue: 0)
             ]),
-            Day2.Game(id: 4, rounds: [
-                Day2.Round(red: 3, green: 1, blue: 6),
-                Day2.Round(red: 6, green: 3, blue: 0),
-                Day2.Round(red: 14, green: 3, blue: 15)
+            Game(id: 4, rounds: [
+                Round(red: 3, green: 1, blue: 6),
+                Round(red: 6, green: 3, blue: 0),
+                Round(red: 14, green: 3, blue: 15)
             ]),
-            Day2.Game(id: 5, rounds: [
-                Day2.Round(red: 6, green: 3, blue: 1),
-                Day2.Round(red: 1, green: 2, blue: 2)
+            Game(id: 5, rounds: [
+                Round(red: 6, green: 3, blue: 1),
+                Round(red: 1, green: 2, blue: 2)
             ]),
         ]
 
-        let result = Day2.Part2.sumOfPowerOfMinimumCubeSets(for: games)
+        let result = Part2.sumOfPowerOfMinimumCubeSets(for: games)
 
         XCTAssertEqual(result, 2286)
     }
@@ -235,7 +235,7 @@ final class AOC2023_Day2Tests: XCTestCase {
         Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
         """
 
-        let result = Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
+        let result = Part2.sumOfPowerOfMinimumCubeSets(for: input)
 
         XCTAssertEqual(result, 2286)
     }

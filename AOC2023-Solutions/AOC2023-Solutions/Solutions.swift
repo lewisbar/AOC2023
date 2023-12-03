@@ -51,13 +51,13 @@ enum Solutions {
 
         static var part1: String {
             let input = Day2Input.input
-            let result = AOC2023_Day2.Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
+            let result = AOC2023_Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
             return String(result)
         }
 
         static var part2: String {
             let input = Day2Input.input
-            let result = AOC2023_Day2.Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
+            let result = AOC2023_Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
             return String(result)
         }
     }
