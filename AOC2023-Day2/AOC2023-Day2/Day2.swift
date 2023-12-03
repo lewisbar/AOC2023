@@ -20,7 +20,7 @@ public enum Day2 {
     }
 
     public enum Part1 {
-        static func sumOfPossibleIDs(in input: String, redCubes: Int, greenCubes: Int, blueCubes: Int) -> Int {
+        public static func sumOfPossibleIDs(in input: String, redCubes: Int, greenCubes: Int, blueCubes: Int) -> Int {
             let games = parseLines(input)
             let cubeSet = Round(red: redCubes, green: greenCubes, blue: blueCubes)
             return sumOfPossibleIDs(outOf: games, for: cubeSet)

@@ -15,6 +15,8 @@
 		305C0D472B19FCEF00168981 /* AOC2023_Day1.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0D452B19FCEF00168981 /* AOC2023_Day1.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		305C0D602B1BEB8900168981 /* AOC2023_Day2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */; };
 		305C0D612B1BEB8900168981 /* AOC2023_Day2.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30CBA4AD2B1C11E30039BE2D /* Solutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA4AC2B1C11E30039BE2D /* Solutions.swift */; };
+		30CBA4B12B1C19100039BE2D /* DaySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA4B02B1C19100039BE2D /* DaySummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +42,8 @@
 		305C0D3D2B19FA2100168981 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		305C0D452B19FCEF00168981 /* AOC2023_Day1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AOC2023_Day1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AOC2023_Day2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30CBA4AC2B1C11E30039BE2D /* Solutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solutions.swift; sourceTree = "<group>"; };
+		30CBA4B02B1C19100039BE2D /* DaySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 			children = (
 				305C0D362B19FA1F00168981 /* AOC2023_SolutionsApp.swift */,
 				305C0D382B19FA1F00168981 /* ContentView.swift */,
+				30CBA4B02B1C19100039BE2D /* DaySummaryView.swift */,
+				30CBA4AC2B1C11E30039BE2D /* Solutions.swift */,
 				305C0D3A2B19FA2100168981 /* Assets.xcassets */,
 				305C0D3C2B19FA2100168981 /* Preview Content */,
 			);
@@ -173,6 +179,8 @@
 			files = (
 				305C0D392B19FA1F00168981 /* ContentView.swift in Sources */,
 				305C0D372B19FA1F00168981 /* AOC2023_SolutionsApp.swift in Sources */,
+				30CBA4B12B1C19100039BE2D /* DaySummaryView.swift in Sources */,
+				30CBA4AD2B1C11E30039BE2D /* Solutions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
