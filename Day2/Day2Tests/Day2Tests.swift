@@ -1,12 +1,12 @@
 //
-//  AOC2023_Day2Tests.swift
-//  AOC2023_Day2Tests
+//  Day2Tests.swift
+//  Day2Tests
 //
 //  Created by LennartWisbar on 02.12.23.
 //
 
 import XCTest
-@testable import AOC2023_Day2
+@testable import Day2
 
 final class AOC2023_Day2Tests: XCTestCase {
 

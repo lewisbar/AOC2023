@@ -7,7 +7,7 @@
 
 import Foundation
 import AOC2023_Day1
-import AOC2023_Day2
+import Day2
 
 enum Solutions {
     struct DaySummary: Identifiable {
@@ -19,10 +19,10 @@ enum Solutions {
     // MARK: - Private
 
     static var daySummaries: [DaySummary] {
-        [Day1.summary, Day2.summary]
+        [Day1Solutions.summary, Day2Solutions.summary]
     }
 
-    private enum Day1 {
+    private enum Day1Solutions {
         static var summary: DaySummary {
             DaySummary(id: "1", solution1: part1, solution2: part2)
         }
@@ -44,20 +44,20 @@ enum Solutions {
         }
     }
 
-    private enum Day2 {
+    private enum Day2Solutions {
         static var summary: DaySummary {
             DaySummary(id: "2", solution1: part1, solution2: part2)
         }
 
         static var part1: String {
             let input = Day2Input.input
-            let result = AOC2023_Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
+            let result = Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
             return String(result)
         }
 
         static var part2: String {
             let input = Day2Input.input
-            let result = AOC2023_Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
+            let result = Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
             return String(result)
         }
     }
