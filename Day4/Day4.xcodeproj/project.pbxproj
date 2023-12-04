@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30D62D442B1D9477003EE4C8 /* Day4.h in Headers */ = {isa = PBXBuildFile; fileRef = 30D62D432B1D9477003EE4C8 /* Day4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30D62D512B1D94BB003EE4C8 /* Day4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D62D502B1D94BB003EE4C8 /* Day4Tests.swift */; };
 		30D62D522B1D94BB003EE4C8 /* Day4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D62D402B1D9477003EE4C8 /* Day4.framework */; };
 		30F0981A2B1DBA8B00273040 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F098192B1DBA8B00273040 /* Input.swift */; };
+		30F0981C2B1DBAE500273040 /* Day4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F0981B2B1DBAE500273040 /* Day4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,10 +25,10 @@
 
 /* Begin PBXFileReference section */
 		30D62D402B1D9477003EE4C8 /* Day4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Day4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		30D62D432B1D9477003EE4C8 /* Day4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Day4.h; sourceTree = "<group>"; };
 		30D62D4E2B1D94BB003EE4C8 /* Day4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D62D502B1D94BB003EE4C8 /* Day4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4Tests.swift; sourceTree = "<group>"; };
 		30F098192B1DBA8B00273040 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		30F0981B2B1DBAE500273040 /* Day4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +71,8 @@
 		30D62D422B1D9477003EE4C8 /* Day4 */ = {
 			isa = PBXGroup;
 			children = (
-				30D62D432B1D9477003EE4C8 /* Day4.h */,
 				30F098192B1DBA8B00273040 /* Input.swift */,
+				30F0981B2B1DBAE500273040 /* Day4.swift */,
 			);
 			path = Day4;
 			sourceTree = "<group>";
@@ -92,7 +92,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30D62D442B1D9477003EE4C8 /* Day4.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30F0981A2B1DBA8B00273040 /* Input.swift in Sources */,
+				30F0981C2B1DBAE500273040 /* Day4.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

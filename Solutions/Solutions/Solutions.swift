@@ -8,6 +8,7 @@
 import Foundation
 import Day1
 import Day2
+import Day4
 
 enum Solutions {
     struct DaySummary: Identifiable {
@@ -19,7 +20,7 @@ enum Solutions {
     // MARK: - Private
 
     static var daySummaries: [DaySummary] {
-        [Day1Solutions.summary, Day2Solutions.summary]
+        [Day1Solutions.summary, Day2Solutions.summary, Day4Solutions.summary]
     }
 
     private enum Day1Solutions {
@@ -51,6 +52,24 @@ enum Solutions {
 
         static var part1: String {
             let input = Day2Input.input
+            let result = Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
+            return String(result)
+        }
+
+        static var part2: String {
+            let input = Day2Input.input
+            let result = Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
+            return String(result)
+        }
+    }
+
+    private enum Day4Solutions {
+        static var summary: DaySummary {
+            DaySummary(id: "4", solution1: part1, solution2: part2)
+        }
+
+        static var part1: String {
+            let input = Day4Input.input
             let result = Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
             return String(result)
         }
