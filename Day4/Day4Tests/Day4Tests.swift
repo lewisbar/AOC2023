@@ -8,6 +8,15 @@
 import XCTest
 
 enum Part1 {
+    static func parseLine(_ input: String) -> (winningNumbers: [Int], ownedNumbers: [Int]) {
+        let components = input
+            .components(separatedBy: ": ")[1]
+            .components(separatedBy: " | ")
+            .map { $0.components(separatedBy: .whitespaces).compactMap(Int.init) }
+        
+        return (components[0], components[1])
+    }
+
     static func points(for winningNumberCount: Int) -> Int {
         Int(pow(2, Double(winningNumberCount - 1)))
     }
@@ -18,6 +27,15 @@ enum Part1 {
 }
 
 final class Day4Tests: XCTestCase {
+    func test_parseLine_returnsWinningAndOwnedNumbers() {
+        let input = "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53"
+
+        let result = Part1.parseLine(input)
+
+        XCTAssertEqual(result.winningNumbers, [41, 48, 83, 86, 17])
+        XCTAssertEqual(result.ownedNumbers, [83, 86, 6, 31, 17, 9, 48, 53])
+    }
+
     func test_pointsForWinningNumberCount_calculatesCorrectPoints() {
         let counts = [1, 2, 3, 4, 5]
 
