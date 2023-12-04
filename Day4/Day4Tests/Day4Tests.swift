@@ -52,10 +52,10 @@ final class Day4Tests: XCTestCase {
     }
 
     func test_winningNumbers_findsMatchingNumbers() {
-        let possibleWinners = [41, 48, 83, 86, 17]
+        let winningNumbers = [41, 48, 83, 86, 17]
         let myNumbers = [83, 86, 6, 31, 17, 9, 48, 53]
 
-        let result = Part1.winningNumbers(outOf: myNumbers, possibleWinners: possibleWinners)
+        let result = Part1.wonNumbers(outOf: myNumbers, winningNumbers: winningNumbers)
 
         XCTAssertEqual(result, [83, 86, 17, 48])
     }

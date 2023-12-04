@@ -10,7 +10,7 @@ import Foundation
 public enum Part1 {
     public static func points(for input: String) -> Int {
         parseLines(input)
-            .map(winningNumbers)
+            .map(wonNumbers)
             .map { points(for: $0.count) }
             .reduce(0, +)
     }
@@ -34,7 +34,9 @@ public enum Part1 {
         Int(pow(2, Double(winningNumberCount - 1)))
     }
 
-    static func winningNumbers(outOf myNumbers: [Int], possibleWinners: [Int]) -> [Int] {
-        myNumbers.filter(possibleWinners.contains)
+    static func wonNumbers(outOf ownedNumbers: [Int], winningNumbers: [Int]) -> [Int] {
+        ownedNumbers.filter(winningNumbers.contains)
+    }
+}
     }
 }
