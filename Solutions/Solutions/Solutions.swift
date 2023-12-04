@@ -70,14 +70,12 @@ enum Solutions {
 
         static var part1: String {
             let input = Day4Input.input
-            let result = Day2.Part1.sumOfPossibleIDs(in: input, redCubes: 12, greenCubes: 13, blueCubes: 14)
+            let result = Day4.Part1.points(for: input)
             return String(result)
         }
 
         static var part2: String {
-            let input = Day2Input.input
-            let result = Day2.Part2.sumOfPowerOfMinimumCubeSets(for: input)
-            return String(result)
+            "No solution yet"
         }
     }
 }
