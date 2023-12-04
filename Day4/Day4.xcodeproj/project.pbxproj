@@ -10,6 +10,7 @@
 		30D62D442B1D9477003EE4C8 /* Day4.h in Headers */ = {isa = PBXBuildFile; fileRef = 30D62D432B1D9477003EE4C8 /* Day4.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30D62D512B1D94BB003EE4C8 /* Day4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D62D502B1D94BB003EE4C8 /* Day4Tests.swift */; };
 		30D62D522B1D94BB003EE4C8 /* Day4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D62D402B1D9477003EE4C8 /* Day4.framework */; };
+		30F0981A2B1DBA8B00273040 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F098192B1DBA8B00273040 /* Input.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		30D62D432B1D9477003EE4C8 /* Day4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Day4.h; sourceTree = "<group>"; };
 		30D62D4E2B1D94BB003EE4C8 /* Day4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D62D502B1D94BB003EE4C8 /* Day4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4Tests.swift; sourceTree = "<group>"; };
+		30F098192B1DBA8B00273040 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				30D62D432B1D9477003EE4C8 /* Day4.h */,
+				30F098192B1DBA8B00273040 /* Input.swift */,
 			);
 			path = Day4;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				TargetAttributes = {
 					30D62D3F2B1D9477003EE4C8 = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 					30D62D4D2B1D94BB003EE4C8 = {
 						CreatedOnToolsVersion = 15.0;
@@ -191,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F0981A2B1DBA8B00273040 /* Input.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +345,7 @@
 		30D62D482B1D9477003EE4C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -365,6 +371,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -372,6 +379,7 @@
 		30D62D492B1D9477003EE4C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -404,6 +412,7 @@
 		30D62D562B1D94BB003EE4C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9SPL76B3GR;
@@ -420,6 +429,7 @@
 		30D62D572B1D94BB003EE4C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9SPL76B3GR;
