@@ -5,6 +5,9 @@
       location = "group:Solutions/Solutions.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Day4/Day4.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Day2/Day2.xcodeproj">
    </FileRef>
    <FileRef
