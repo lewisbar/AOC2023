@@ -38,5 +38,24 @@ public enum Part1 {
         ownedNumbers.filter(winningNumbers.contains)
     }
 }
+
+public enum Part2 {
+    struct Card: Equatable {
+        let id: Int
+        let winningNumbers: [Int]
+        let ownedNumbers: [Int]
+    }
+
+    static func directlyWonCards(withCardIndex cardIndex: Int, outOf allCards: [Card]) -> [Card] {
+        let currentCard = allCards[cardIndex]
+
+        let winningNumberCount = Part1.wonNumbers(outOf: currentCard.ownedNumbers, winningNumbers: currentCard.winningNumbers).count
+
+        let firstNewCardIndex = cardIndex + 1
+        let lastNewCardIndex = cardIndex + winningNumberCount
+
+        guard firstNewCardIndex < allCards.count, lastNewCardIndex < allCards.count, firstNewCardIndex < lastNewCardIndex else { return [] }
+
+        return Array(allCards[cardIndex+1...cardIndex+winningNumberCount])
     }
 }
