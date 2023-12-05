@@ -127,3 +127,43 @@ public enum Part1 {
         return AgriMap(knownRanges: ranges)
     }
 }
+
+public enum Part2 {
+    public static func lowestLocation(from input: String) -> Int? {
+        let blocks = input.components(separatedBy: "\n\n")
+
+        let almanac = Almanac(
+            seeds: parseSeeds(blocks[0]),
+            seedToSoil: Part1.parseMap(Part1.trimFirstLine(from: blocks[1])),
+            soilToFertilizer: Part1.parseMap(Part1.trimFirstLine(from: blocks[2])),
+            fertilizerToWater: Part1.parseMap(Part1.trimFirstLine(from: blocks[3])),
+            waterToLight: Part1.parseMap(Part1.trimFirstLine(from: blocks[4])),
+            lightToTemperature: Part1.parseMap(Part1.trimFirstLine(from: blocks[5])),
+            temperatureToHumidity: Part1.parseMap(Part1.trimFirstLine(from: blocks[6])),
+            humidityToLocation: Part1.parseMap(Part1.trimFirstLine(from: blocks[7]))
+        )
+
+        return almanac.locations.min()
+    }
+
+    static func parseSeeds(_ input: String) -> [Int] {
+        let part1Seeds = Part1.parseSeeds(input)
+
+        var seedTuples = [(Int, Int)]()
+
+        for index in stride(from: 0, through: part1Seeds.count, by: 2) {
+            if index + 1 < part1Seeds.count {
+                seedTuples.append((part1Seeds[index], part1Seeds[index+1]))
+            }
+        }
+
+        var seeds = [Int]()
+
+        for seedTuple in seedTuples {
+            let tupleSeeds = Array(seedTuple.0..<seedTuple.0 + seedTuple.1)
+            seeds += tupleSeeds
+        }
+
+        return seeds
+    }
+}
