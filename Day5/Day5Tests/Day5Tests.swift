@@ -89,6 +89,7 @@ class Almanac {
 
 enum Part1 {
     static func parseInput(_ input: String) -> Almanac? {
+    static func parseInput(_ input: String) -> Almanac {
         let blocks = input.components(separatedBy: "\n\n")
 
         return Almanac(
@@ -262,14 +263,14 @@ final class Day5Tests: XCTestCase {
             ])
         )
 
-        XCTAssertEqual(result?.seeds, expectedResult.seeds)
-        XCTAssertEqual(result?.seedToSoil.knownRanges, expectedResult.seedToSoil.knownRanges)
-        XCTAssertEqual(result?.soilToFertilizer.knownRanges, expectedResult.soilToFertilizer.knownRanges)
-        XCTAssertEqual(result?.fertilizerToWater.knownRanges, expectedResult.fertilizerToWater.knownRanges)
-        XCTAssertEqual(result?.waterToLight.knownRanges, expectedResult.waterToLight.knownRanges)
-        XCTAssertEqual(result?.lightToTemperature.knownRanges, expectedResult.lightToTemperature.knownRanges)
-        XCTAssertEqual(result?.temperatureToHumidity.knownRanges, expectedResult.temperatureToHumidity.knownRanges)
-        XCTAssertEqual(result?.humidityToLocation.knownRanges, expectedResult.humidityToLocation.knownRanges)
+        XCTAssertEqual(result.seeds, expectedResult.seeds)
+        XCTAssertEqual(result.seedToSoil.knownRanges, expectedResult.seedToSoil.knownRanges)
+        XCTAssertEqual(result.soilToFertilizer.knownRanges, expectedResult.soilToFertilizer.knownRanges)
+        XCTAssertEqual(result.fertilizerToWater.knownRanges, expectedResult.fertilizerToWater.knownRanges)
+        XCTAssertEqual(result.waterToLight.knownRanges, expectedResult.waterToLight.knownRanges)
+        XCTAssertEqual(result.lightToTemperature.knownRanges, expectedResult.lightToTemperature.knownRanges)
+        XCTAssertEqual(result.temperatureToHumidity.knownRanges, expectedResult.temperatureToHumidity.knownRanges)
+        XCTAssertEqual(result.humidityToLocation.knownRanges, expectedResult.humidityToLocation.knownRanges)
     }
 
     func test_almanac_locations_returnsLocationsForItsSeeds() {
