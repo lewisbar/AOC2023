@@ -10,6 +10,7 @@
 		30F098382B1EEDA800273040 /* Day5Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F098372B1EEDA800273040 /* Day5Tests.swift */; };
 		30F098392B1EEDA800273040 /* Day5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30F098272B1EED7E00273040 /* Day5.framework */; };
 		30F098432B1EEFC900273040 /* Day5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F098422B1EEFC900273040 /* Day5.swift */; };
+		30F098452B1F3E5D00273040 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F098442B1F3E5C00273040 /* Input.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		30F098352B1EEDA800273040 /* Day5Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day5Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F098372B1EEDA800273040 /* Day5Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5Tests.swift; sourceTree = "<group>"; };
 		30F098422B1EEFC900273040 /* Day5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5.swift; sourceTree = "<group>"; };
+		30F098442B1F3E5C00273040 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				30F098422B1EEFC900273040 /* Day5.swift */,
+				30F098442B1F3E5C00273040 /* Input.swift */,
 			);
 			path = Day5;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F098452B1F3E5D00273040 /* Input.swift in Sources */,
 				30F098432B1EEFC900273040 /* Day5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
