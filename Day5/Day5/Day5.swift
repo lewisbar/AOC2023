@@ -107,7 +107,7 @@ public enum Part1 {
         )
     }
 
-    private static func trimFirstLine(from input: String) -> String {
+    static func trimFirstLine(from input: String) -> String {
         String(input.components(separatedBy: .newlines).dropFirst().joined(separator: "\n"))
     }
 

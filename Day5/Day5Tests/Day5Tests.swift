@@ -8,7 +8,50 @@
 import XCTest
 @testable import Day5
 
+public enum Part2 {
+    public static func lowestLocation(from input: String) -> Int? {
+        let blocks = input.components(separatedBy: "\n\n")
+
+        let almanac = Almanac(
+            seeds: parseSeeds(blocks[0]),
+            seedToSoil: Part1.parseMap(Part1.trimFirstLine(from: blocks[1])),
+            soilToFertilizer: Part1.parseMap(Part1.trimFirstLine(from: blocks[2])),
+            fertilizerToWater: Part1.parseMap(Part1.trimFirstLine(from: blocks[3])),
+            waterToLight: Part1.parseMap(Part1.trimFirstLine(from: blocks[4])),
+            lightToTemperature: Part1.parseMap(Part1.trimFirstLine(from: blocks[5])),
+            temperatureToHumidity: Part1.parseMap(Part1.trimFirstLine(from: blocks[6])),
+            humidityToLocation: Part1.parseMap(Part1.trimFirstLine(from: blocks[7]))
+        )
+
+        return almanac.locations.min()
+    }
+
+    static func parseSeeds(_ input: String) -> [Int] {
+        let part1Seeds = Part1.parseSeeds(input)
+
+        var seedTuples = [(Int, Int)]()
+
+        for index in stride(from: 0, through: part1Seeds.count, by: 2) {
+            if index + 1 < part1Seeds.count {
+                seedTuples.append((part1Seeds[index], part1Seeds[index+1]))
+            }
+        }
+
+        var seeds = [Int]()
+
+        for seedTuple in seedTuples {
+            let tupleSeeds = Array(seedTuple.0..<seedTuple.0 + seedTuple.1)
+            seeds += tupleSeeds
+        }
+
+        return seeds
+    }
+}
+
 final class Day5Tests: XCTestCase {
+
+    // MARK: - Part 1
+
     func test_parseSeeds_returnsListOfSeeds() {
         let input = "seeds: 79 14 55 13"
 
@@ -236,5 +279,59 @@ final class Day5Tests: XCTestCase {
         let result = Part1.lowestLocationNumber(from: input)
 
         XCTAssertEqual(result, 35)
+    }
+
+    // MARK: - Part 2
+
+    func test_parseSeedsPart2_returnsListOfSeeds() {
+        let input = "seeds: 79 14 55 13"
+
+        let result = Part2.parseSeeds(input)
+
+        let expectedResult = Array(79..<93) + Array(55..<68)
+
+        XCTAssertEqual(result, expectedResult)
+    }
+
+    func test_lowestLocationPart2_returnsLowestLocationFromInput() {
+        let input = """
+        seeds: 79 14 55 13
+
+        seed-to-soil map:
+        50 98 2
+        52 50 48
+
+        soil-to-fertilizer map:
+        0 15 37
+        37 52 2
+        39 0 15
+
+        fertilizer-to-water map:
+        49 53 8
+        0 11 42
+        42 0 7
+        57 7 4
+
+        water-to-light map:
+        88 18 7
+        18 25 70
+
+        light-to-temperature map:
+        45 77 23
+        81 45 19
+        68 64 13
+
+        temperature-to-humidity map:
+        0 69 1
+        1 0 69
+
+        humidity-to-location map:
+        60 56 37
+        56 93 4
+        """
+
+        let result = Part2.lowestLocation(from: input)
+
+        XCTAssertEqual(result, 46)
     }
 }
