@@ -8,23 +8,23 @@
 import XCTest
 
 struct AgriRange: Equatable {
-    let startKey: Int
-    let startValue: Int
+    let source: Int
+    let destination: Int
     let rangeLength: Int
 
-    private var keyRange: Range<Int> {
-        startKey..<startKey + rangeLength
+    private var sourceRange: Range<Int> {
+        source..<source + rangeLength
     }
 
     func contains(_ key: Int) -> Bool {
-        (keyRange).contains(key)
+        (sourceRange).contains(key)
     }
 
     func value(for key: Int) -> Int {
         switch contains(key) {
         case true:
-            let difference = key - startKey
-            return startValue + difference
+            let difference = destination - source
+            return key + difference
         case false:
             return key
         }
@@ -74,6 +74,17 @@ class Almanac {
         self.temperatureToHumidity = temperatureToHumidity
         self.humidityToLocation = humidityToLocation
     }
+
+    var locations: [Int] {
+        seeds
+            .map(seedToSoil.value)
+            .map(soilToFertilizer.value)
+            .map(fertilizerToWater.value)
+            .map(waterToLight.value)
+            .map(lightToTemperature.value)
+            .map(temperatureToHumidity.value)
+            .map(humidityToLocation.value)
+    }
 }
 
 enum Part1 {
@@ -107,7 +118,7 @@ enum Part1 {
         let ranges = input
             .components(separatedBy: .newlines)
             .map { $0.components(separatedBy: .whitespaces).compactMap(Int.init) }
-            .map { AgriRange(startKey: $0[0], startValue: $0[1], rangeLength: $0[2]) }
+            .map { AgriRange(source: $0[1], destination: $0[0], rangeLength: $0[2]) }
 
         return AgriMap(knownRanges: ranges)
     }
@@ -123,7 +134,7 @@ final class Day5Tests: XCTestCase {
     }
 
     func test_agriRange_contains_reportsIfKeyIsContained() {
-        let range = AgriRange(startKey: 1, startValue: 100, rangeLength: 5)
+        let range = AgriRange(source: 1, destination: 100, rangeLength: 5)
 
         let result = [0, 1, 5, 6].map(range.contains)
 
@@ -131,7 +142,7 @@ final class Day5Tests: XCTestCase {
     }
 
     func test_agriRange_contains_returnsValueForContainedKeys() {
-        let range = AgriRange(startKey: 1, startValue: 100, rangeLength: 5)
+        let range = AgriRange(source: 1, destination: 100, rangeLength: 5)
 
         let result = [0, 1, 5, 6].map(range.value)
 
@@ -140,8 +151,8 @@ final class Day5Tests: XCTestCase {
 
     func test_agriMap_isKnownKey_reportsIfKeyIsContainedInKnownRanges() {
         let ranges = [
-            AgriRange(startKey: 2, startValue: 99, rangeLength: 5),
-            AgriRange(startKey: 50, startValue: 2, rangeLength: 4)
+            AgriRange(source: 2, destination: 99, rangeLength: 5),
+            AgriRange(source: 50, destination: 2, rangeLength: 4)
         ]
 
         let agriMap = AgriMap(knownRanges: ranges)
@@ -153,13 +164,13 @@ final class Day5Tests: XCTestCase {
 
     func test_agriMap_valueForKey_returnsCorrectValuesForKnownAndUnknownKeys() {
         let agriMap = AgriMap(knownRanges: [
-            AgriRange(startKey: 50, startValue: 98, rangeLength: 2),
-            AgriRange(startKey: 52, startValue: 50, rangeLength: 48)
+            AgriRange(source: 98, destination: 50, rangeLength: 2),
+            AgriRange(source: 50, destination: 52, rangeLength: 48)
         ])
 
-        let result = [49, 50, 51, 52, 99, 100].map { agriMap.value(for: $0) }
+        let result = [79, 14, 55, 13].map { agriMap.value(for: $0) }
 
-        XCTAssertEqual(result, [49, 98, 99, 50, 97, 100])
+        XCTAssertEqual(result, [81, 14, 57, 13])
     }
 
     func test_parseMap_returnsAgriMapWithCorrectKnownRanges() {
@@ -171,8 +182,8 @@ final class Day5Tests: XCTestCase {
         let result = Part1.parseMap(input)
 
         XCTAssertEqual(result.knownRanges, [
-            AgriRange(startKey: 50, startValue: 98, rangeLength: 2),
-            AgriRange(startKey: 52, startValue: 50, rangeLength: 48)
+            AgriRange(source: 98, destination: 50, rangeLength: 2),
+            AgriRange(source: 50, destination: 52, rangeLength: 48)
         ])
     }
 
@@ -218,36 +229,36 @@ final class Day5Tests: XCTestCase {
         let expectedResult = Almanac(
             seeds: [79, 14, 55, 13],
             seedToSoil: AgriMap(knownRanges: [
-                AgriRange(startKey: 50, startValue: 98, rangeLength: 2),
-                AgriRange(startKey: 52, startValue: 50, rangeLength: 48)
+                AgriRange(source: 98, destination: 50, rangeLength: 2),
+                AgriRange(source: 50, destination: 52, rangeLength: 48)
             ]),
             soilToFertilizer: AgriMap(knownRanges: [
-                AgriRange(startKey: 0, startValue: 15, rangeLength: 37),
-                AgriRange(startKey: 37, startValue: 52, rangeLength: 2),
-                AgriRange(startKey: 39, startValue: 0, rangeLength: 15)
+                AgriRange(source: 15, destination: 0, rangeLength: 37),
+                AgriRange(source: 52, destination: 37, rangeLength: 2),
+                AgriRange(source: 0, destination: 39, rangeLength: 15)
             ]),
             fertilizerToWater: AgriMap(knownRanges: [
-                AgriRange(startKey: 49, startValue: 53, rangeLength: 8),
-                AgriRange(startKey: 0, startValue: 11, rangeLength: 42),
-                AgriRange(startKey: 42, startValue: 0, rangeLength: 7),
-                AgriRange(startKey: 57, startValue: 7, rangeLength: 4)
+                AgriRange(source: 53, destination: 49, rangeLength: 8),
+                AgriRange(source: 11, destination: 0, rangeLength: 42),
+                AgriRange(source: 0, destination: 42, rangeLength: 7),
+                AgriRange(source: 7, destination: 57, rangeLength: 4)
             ]),
             waterToLight: AgriMap(knownRanges: [
-                AgriRange(startKey: 88, startValue: 18, rangeLength: 7),
-                AgriRange(startKey: 18, startValue: 25, rangeLength: 70)
+                AgriRange(source: 18, destination: 88, rangeLength: 7),
+                AgriRange(source: 25, destination: 18, rangeLength: 70)
             ]),
             lightToTemperature: AgriMap(knownRanges: [
-                AgriRange(startKey: 45, startValue: 77, rangeLength: 23),
-                AgriRange(startKey: 81, startValue: 45, rangeLength: 19),
-                AgriRange(startKey: 68, startValue: 64, rangeLength: 13)
+                AgriRange(source: 77, destination: 45, rangeLength: 23),
+                AgriRange(source: 45, destination: 81, rangeLength: 19),
+                AgriRange(source: 64, destination: 68, rangeLength: 13)
             ]),
             temperatureToHumidity: AgriMap(knownRanges: [
-                AgriRange(startKey: 0, startValue: 69, rangeLength: 1),
-                AgriRange(startKey: 1, startValue: 0, rangeLength: 69)
+                AgriRange(source: 69, destination: 0, rangeLength: 1),
+                AgriRange(source: 0, destination: 1, rangeLength: 69)
             ]),
             humidityToLocation: AgriMap(knownRanges: [
-                AgriRange(startKey: 60, startValue: 56, rangeLength: 37),
-                AgriRange(startKey: 56, startValue: 93, rangeLength: 4)
+                AgriRange(source: 56, destination: 60, rangeLength: 37),
+                AgriRange(source: 93, destination: 56, rangeLength: 4)
             ])
         )
 
@@ -259,5 +270,45 @@ final class Day5Tests: XCTestCase {
         XCTAssertEqual(result?.lightToTemperature.knownRanges, expectedResult.lightToTemperature.knownRanges)
         XCTAssertEqual(result?.temperatureToHumidity.knownRanges, expectedResult.temperatureToHumidity.knownRanges)
         XCTAssertEqual(result?.humidityToLocation.knownRanges, expectedResult.humidityToLocation.knownRanges)
+    }
+
+    func test_almanac_locations_returnsLocationsForItsSeeds() {
+        let almanac = Almanac(
+            seeds: [79, 14, 55, 13],
+            seedToSoil: AgriMap(knownRanges: [
+                AgriRange(source: 98, destination: 50, rangeLength: 2),
+                AgriRange(source: 50, destination: 52, rangeLength: 48)
+            ]),
+            soilToFertilizer: AgriMap(knownRanges: [
+                AgriRange(source: 15, destination: 0, rangeLength: 37),
+                AgriRange(source: 52, destination: 37, rangeLength: 2),
+                AgriRange(source: 0, destination: 39, rangeLength: 15)
+            ]),
+            fertilizerToWater: AgriMap(knownRanges: [
+                AgriRange(source: 53, destination: 49, rangeLength: 8),
+                AgriRange(source: 11, destination: 0, rangeLength: 42),
+                AgriRange(source: 0, destination: 42, rangeLength: 7),
+                AgriRange(source: 7, destination: 57, rangeLength: 4)
+            ]),
+            waterToLight: AgriMap(knownRanges: [
+                AgriRange(source: 18, destination: 88, rangeLength: 7),
+                AgriRange(source: 25, destination: 18, rangeLength: 70)
+            ]),
+            lightToTemperature: AgriMap(knownRanges: [
+                AgriRange(source: 77, destination: 45, rangeLength: 23),
+                AgriRange(source: 45, destination: 81, rangeLength: 19),
+                AgriRange(source: 64, destination: 68, rangeLength: 13)
+            ]),
+            temperatureToHumidity: AgriMap(knownRanges: [
+                AgriRange(source: 69, destination: 0, rangeLength: 1),
+                AgriRange(source: 0, destination: 1, rangeLength: 69)
+            ]),
+            humidityToLocation: AgriMap(knownRanges: [
+                AgriRange(source: 56, destination: 60, rangeLength: 37),
+                AgriRange(source: 93, destination: 56, rangeLength: 4)
+            ])
+        )
+
+        XCTAssertEqual(almanac.locations, [82, 43, 86, 35])
     }
 }
