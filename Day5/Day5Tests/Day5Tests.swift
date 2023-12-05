@@ -87,8 +87,11 @@ class Almanac {
     }
 }
 
-enum Part1 {
-    static func parseInput(_ input: String) -> Almanac? {
+public enum Part1 {
+    public static func lowestLocationNumber(from input: String) -> Int? {
+        parseInput(input).locations.min()
+    }
+
     static func parseInput(_ input: String) -> Almanac {
         let blocks = input.components(separatedBy: "\n\n")
 
@@ -311,5 +314,47 @@ final class Day5Tests: XCTestCase {
         )
 
         XCTAssertEqual(almanac.locations, [82, 43, 86, 35])
+    }
+
+    func test_lowestLocationNumber_returnsCorrectNumberFromInput() {
+        let input = """
+        seeds: 79 14 55 13
+
+        seed-to-soil map:
+        50 98 2
+        52 50 48
+
+        soil-to-fertilizer map:
+        0 15 37
+        37 52 2
+        39 0 15
+
+        fertilizer-to-water map:
+        49 53 8
+        0 11 42
+        42 0 7
+        57 7 4
+
+        water-to-light map:
+        88 18 7
+        18 25 70
+
+        light-to-temperature map:
+        45 77 23
+        81 45 19
+        68 64 13
+
+        temperature-to-humidity map:
+        0 69 1
+        1 0 69
+
+        humidity-to-location map:
+        60 56 37
+        56 93 4
+        """
+
+        let result = Part1.lowestLocationNumber(from: input)
+
+        XCTAssertEqual(result, 35)
     }
 }
