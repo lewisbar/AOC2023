@@ -10,6 +10,7 @@ import Day1
 import Day2
 import Day4
 import Day5
+import Day6
 
 enum Solutions {
     struct DaySummary: Identifiable {
@@ -21,7 +22,7 @@ enum Solutions {
     // MARK: - Private
 
     static var daySummaries: [DaySummary] {
-        [Day1Solutions.summary, Day2Solutions.summary, Day4Solutions.summary, Day5Solutions.summary]
+        [Day1Solutions.summary, Day2Solutions.summary, Day4Solutions.summary, Day5Solutions.summary, Day6Solutions.summary]
     }
 
     private enum Day1Solutions {
@@ -88,6 +89,22 @@ enum Solutions {
         static var part1: String {
             let input = Day5Input.input
             guard let result = Day5.Part1.lowestLocationNumber(from: input) else { return "Error: Solution returned nil" }
+            return String(result)
+        }
+
+        static var part2: String {
+            "No solution yet"
+        }
+    }
+
+    private enum Day6Solutions {
+        static var summary: DaySummary {
+            DaySummary(id: "6", solution1: part1, solution2: part2)
+        }
+
+        static var part1: String {
+            let input = Day6Input.input
+            let result = Day6.Part1.multipliedWaysToWin(from: input)
             return String(result)
         }
 
