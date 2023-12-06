@@ -65,4 +65,18 @@ public enum Part2 {
 
         return Race(duration: timeAndDistance[0], recordDistance: timeAndDistance[1])
     }
+
+    static func numberOfWaysToWin(_ race: Race) -> Int {
+        var speed = 0
+        var recordSpeedCount = 0
+
+        while speed < race.duration {
+            if Part1.distance(forSpeed: speed, duration: race.duration) > race.recordDistance {
+                recordSpeedCount += 1
+            }
+            speed += 1
+        }
+
+        return recordSpeedCount
+    }
 }
