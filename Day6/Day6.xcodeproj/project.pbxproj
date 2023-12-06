@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30AC07CD2B204282003161BD /* Day6.h in Headers */ = {isa = PBXBuildFile; fileRef = 30AC07CC2B204282003161BD /* Day6.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30AC07DA2B204298003161BD /* Day6Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC07D92B204298003161BD /* Day6Tests.swift */; };
 		30AC07DB2B204298003161BD /* Day6.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30AC07C92B204282003161BD /* Day6.framework */; };
+		30AC07E22B20D645003161BD /* Day6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC07E12B20D645003161BD /* Day6.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,9 +24,9 @@
 
 /* Begin PBXFileReference section */
 		30AC07C92B204282003161BD /* Day6.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Day6.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		30AC07CC2B204282003161BD /* Day6.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Day6.h; sourceTree = "<group>"; };
 		30AC07D72B204298003161BD /* Day6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Day6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AC07D92B204298003161BD /* Day6Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day6Tests.swift; sourceTree = "<group>"; };
+		30AC07E12B20D645003161BD /* Day6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day6.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 		30AC07CB2B204282003161BD /* Day6 */ = {
 			isa = PBXGroup;
 			children = (
-				30AC07CC2B204282003161BD /* Day6.h */,
+				30AC07E12B20D645003161BD /* Day6.swift */,
 			);
 			path = Day6;
 			sourceTree = "<group>";
@@ -89,7 +89,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30AC07CD2B204282003161BD /* Day6.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +143,7 @@
 				TargetAttributes = {
 					30AC07C82B204282003161BD = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 					30AC07D62B204298003161BD = {
 						CreatedOnToolsVersion = 15.0;
@@ -191,6 +191,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30AC07E22B20D645003161BD /* Day6.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +341,7 @@
 		30AC07D12B204282003161BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -364,6 +366,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -371,6 +374,7 @@
 		30AC07D22B204282003161BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -402,6 +406,7 @@
 		30AC07DF2B204298003161BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9SPL76B3GR;
@@ -417,6 +422,7 @@
 		30AC07E02B204298003161BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9SPL76B3GR;
