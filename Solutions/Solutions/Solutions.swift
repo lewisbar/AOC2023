@@ -19,11 +19,11 @@ enum Solutions {
         let solution2: String
     }
 
-    // MARK: - Private
-
     static var daySummaries: [DaySummary] {
         [Day1Solutions.summary, Day2Solutions.summary, Day4Solutions.summary, Day5Solutions.summary, Day6Solutions.summary]
     }
+
+    // MARK: - Private
 
     private enum Day1Solutions {
         static var summary: DaySummary {
