@@ -9,6 +9,9 @@ import XCTest
 @testable import Day6
 
 final class Day6Tests: XCTestCase {
+
+    // MARK: - Part 1
+
     func test_distanceForPressingTime_returnsCorrectDistance() {
         let distances = [0, 1, 2, 3, 4, 5, 6, 7]
 
@@ -57,5 +60,18 @@ final class Day6Tests: XCTestCase {
         let result = Part1.multipliedWaysToWin(from: input)
 
         XCTAssertEqual(result, 288)
+    }
+
+    // MARK: - Part 2
+
+    func test_parsePart2_returnsRace() {
+        let input = """
+        Time:      7  15   30
+        Distance:  9  40  200
+        """
+        
+        let result = Part2.parse(input)
+
+        XCTAssertEqual(result, Race(duration: 71530, recordDistance: 940200))
     }
 }

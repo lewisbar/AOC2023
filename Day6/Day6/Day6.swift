@@ -54,3 +54,15 @@ public enum Part1 {
         return speed * remainingDuration
     }
 }
+
+public enum Part2 {
+    static func parse(_ input: String) -> Race {
+        let timeAndDistance = input
+            .components(separatedBy: .newlines)
+            .map { $0.components(separatedBy: ":")[1] }
+            .map { $0.replacingOccurrences(of: " ", with: "") }
+            .compactMap(Int.init)
+
+        return Race(duration: timeAndDistance[0], recordDistance: timeAndDistance[1])
+    }
+}
