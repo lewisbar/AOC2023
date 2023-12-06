@@ -32,6 +32,20 @@ public enum Part1 {
         let remainingDuration = duration - speed
         return speed * remainingDuration
     }
+
+    static func waysToWin(_ race: Race) -> [Int] {
+        var speed = 0
+        var recordSpeeds = [Int]()
+
+        while speed < race.duration {
+            if distance(forSpeed: speed, duration: race.duration) > race.recordDistance {
+                recordSpeeds.append(speed)
+            }
+            speed += 1
+        }
+
+        return recordSpeeds
+    }
 }
 
 final class Day6Tests: XCTestCase {
@@ -55,6 +69,22 @@ final class Day6Tests: XCTestCase {
             Race(duration: 7, recordDistance: 9),
             Race(duration: 15, recordDistance: 40),
             Race(duration: 30, recordDistance: 200)
+        ])
+    }
+
+    func test_waysToWin_returnsSpeedsThatWouldBreakTheRecord() {
+        let races = [
+            Race(duration: 7, recordDistance: 9),
+            Race(duration: 15, recordDistance: 40),
+            Race(duration: 30, recordDistance: 200)
+        ]
+
+        let result = races.map(Part1.waysToWin)
+
+        XCTAssertEqual(result, [
+            Array(2...5),
+            Array(4...11),
+            Array(11...19)
         ])
     }
 }
