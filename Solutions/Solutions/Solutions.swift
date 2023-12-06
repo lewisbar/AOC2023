@@ -109,7 +109,9 @@ enum Solutions {
         }
 
         static var part2: String {
-            "No solution yet"
+            let input = Day6Input.input
+            let result = Day6.Part2.numberOfWaysToWin(from: input)
+            return String(result)
         }
     }
 }
