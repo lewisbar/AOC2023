@@ -13,6 +13,13 @@ struct Race: Equatable {
 }
 
 public enum Part1 {
+    public static func multipliedWaysToWin(from input: String) -> Int {
+        parse(input)
+            .map(waysToWin)
+            .map { $0.count }
+            .reduce(1, *)
+    }
+
     static func parse(_ input: String) -> [Race] {
         let timesAndDistances = input
             .components(separatedBy: .newlines)
@@ -28,11 +35,6 @@ public enum Part1 {
         }
     }
 
-    static func distance(forSpeed speed: Int, duration: Int) -> Int {
-        let remainingDuration = duration - speed
-        return speed * remainingDuration
-    }
-
     static func waysToWin(_ race: Race) -> [Int] {
         var speed = 0
         var recordSpeeds = [Int]()
@@ -45,6 +47,11 @@ public enum Part1 {
         }
 
         return recordSpeeds
+    }
+
+    static func distance(forSpeed speed: Int, duration: Int) -> Int {
+        let remainingDuration = duration - speed
+        return speed * remainingDuration
     }
 }
 
@@ -86,5 +93,16 @@ final class Day6Tests: XCTestCase {
             Array(4...11),
             Array(11...19)
         ])
+    }
+
+    func test_multipliedWaysToWin_returnsWaysToWinForEachRaceMultipliedByEachOther() {
+        let input = """
+        Time:      7  15   30
+        Distance:  9  40  200
+        """
+
+        let result = Part1.multipliedWaysToWin(from: input)
+
+        XCTAssertEqual(result, 288)
     }
 }
