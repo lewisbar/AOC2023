@@ -56,6 +56,11 @@ public enum Part1 {
 }
 
 public enum Part2 {
+    public static func numberOfWaysToWin(from input: String) -> Int {
+        let race = parse(input)
+        return numberOfWaysToWin(race)
+    }
+
     static func parse(_ input: String) -> Race {
         let timeAndDistance = input
             .components(separatedBy: .newlines)

@@ -82,4 +82,15 @@ final class Day6Tests: XCTestCase {
 
         XCTAssertEqual(result, 71503)
     }
+
+    func test_numberOfWaysToWinFromInput_returnsNumberOfWaysToWinForSingleRace() {
+        let input = """
+        Time:      7  15   30
+        Distance:  9  40  200
+        """
+
+        let result = Part2.numberOfWaysToWin(from: input)
+
+        XCTAssertEqual(result, 71503)
+    }
 }
