@@ -1,5 +1,5 @@
 //
-//  Input.swift
+//  Day4Input.swift
 //  Day4
 //
 //  Created by LennartWisbar on 04.12.23.

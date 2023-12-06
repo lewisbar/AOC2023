@@ -1,6 +1,6 @@
 //
-//  Input.swift
-//  Day2
+//  Day2Input.swift
+//  Solutions
 //
 //  Created by LennartWisbar on 03.12.23.
 //

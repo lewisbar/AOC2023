@@ -12,6 +12,10 @@
 		305C0D3B2B19FA2100168981 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305C0D3A2B19FA2100168981 /* Assets.xcassets */; };
 		305C0D3E2B19FA2100168981 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 305C0D3D2B19FA2100168981 /* Preview Assets.xcassets */; };
 		30AC07E52B20D752003161BD /* Day6Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC07E42B20D752003161BD /* Day6Input.swift */; };
+		30AC07E72B20D802003161BD /* Day1Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC07E62B20D802003161BD /* Day1Input.swift */; };
+		30AC07E92B20D896003161BD /* Day2Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC07E82B20D895003161BD /* Day2Input.swift */; };
+		30AC07EB2B20D8C6003161BD /* Day4Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC07EA2B20D8C6003161BD /* Day4Input.swift */; };
+		30AC07ED2B20D8DA003161BD /* Day5Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AC07EC2B20D8DA003161BD /* Day5Input.swift */; };
 		30CBA4AD2B1C11E30039BE2D /* Solutions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA4AC2B1C11E30039BE2D /* Solutions.swift */; };
 		30CBA4B12B1C19100039BE2D /* DaySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CBA4B02B1C19100039BE2D /* DaySummaryView.swift */; };
 		30CBA4B32B1C223C0039BE2D /* Day2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CBA4B22B1C223C0039BE2D /* Day2.framework */; };
@@ -53,6 +57,10 @@
 		305C0D452B19FCEF00168981 /* AOC2023_Day1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AOC2023_Day1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		305C0D5F2B1BEB8900168981 /* AOC2023_Day2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AOC2023_Day2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30AC07E42B20D752003161BD /* Day6Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day6Input.swift; sourceTree = "<group>"; };
+		30AC07E62B20D802003161BD /* Day1Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day1Input.swift; sourceTree = "<group>"; };
+		30AC07E82B20D895003161BD /* Day2Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day2Input.swift; sourceTree = "<group>"; };
+		30AC07EA2B20D8C6003161BD /* Day4Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day4Input.swift; sourceTree = "<group>"; };
+		30AC07EC2B20D8DA003161BD /* Day5Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day5Input.swift; sourceTree = "<group>"; };
 		30CBA4AC2B1C11E30039BE2D /* Solutions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solutions.swift; sourceTree = "<group>"; };
 		30CBA4B02B1C19100039BE2D /* DaySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySummaryView.swift; sourceTree = "<group>"; };
 		30CBA4B22B1C223C0039BE2D /* Day2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Day2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +142,10 @@
 		30AC07E32B20D736003161BD /* Input */ = {
 			isa = PBXGroup;
 			children = (
+				30AC07E62B20D802003161BD /* Day1Input.swift */,
+				30AC07E82B20D895003161BD /* Day2Input.swift */,
+				30AC07EA2B20D8C6003161BD /* Day4Input.swift */,
+				30AC07EC2B20D8DA003161BD /* Day5Input.swift */,
 				30AC07E42B20D752003161BD /* Day6Input.swift */,
 			);
 			path = Input;
@@ -210,10 +222,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30AC07E92B20D896003161BD /* Day2Input.swift in Sources */,
+				30AC07E72B20D802003161BD /* Day1Input.swift in Sources */,
 				305C0D392B19FA1F00168981 /* ContentView.swift in Sources */,
 				305C0D372B19FA1F00168981 /* SolutionsApp.swift in Sources */,
 				30AC07E52B20D752003161BD /* Day6Input.swift in Sources */,
 				30CBA4B12B1C19100039BE2D /* DaySummaryView.swift in Sources */,
+				30AC07ED2B20D8DA003161BD /* Day5Input.swift in Sources */,
+				30AC07EB2B20D8C6003161BD /* Day4Input.swift in Sources */,
 				30CBA4AD2B1C11E30039BE2D /* Solutions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
