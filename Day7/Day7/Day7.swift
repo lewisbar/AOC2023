@@ -47,10 +47,6 @@ public enum Part1 {
 
         for (index, hand) in sortedHands.enumerated() {
             winnings += hand.bid * (index + 1)
-            print("Hand", hand.type)
-            print("Cards", hand.cards)
-            print("Bid", hand.bid)
-            print("Rank", index + 1)
         }
 
         return winnings
