@@ -7,20 +7,27 @@
 
 import XCTest
 
-struct Hand: Equatable {
+struct Hand: Equatable, Comparable {
     let type: HandType
     let cards: [Int]
     let bid: Int
+
+    static func < (lhs: Hand, rhs: Hand) -> Bool {
+        if lhs.type == rhs.type {
+            return lhs.cards.map(String.init).joined() < rhs.cards.map(String.init).joined()
+        }
+        return lhs.type < rhs.type
+    }
 }
 
 enum HandType: Int, Comparable {
-    case fiveOfAKind = 0
-    case fourOfAKind = 1
-    case fullHouse = 2
+    case fiveOfAKind = 6
+    case fourOfAKind = 5
+    case fullHouse = 4
     case threeOfAKind = 3
-    case twoPair = 4
-    case onePair = 5
-    case highCard = 6
+    case twoPair = 2
+    case onePair = 1
+    case highCard = 0
 
     static func < (lhs: HandType, rhs: HandType) -> Bool {
         lhs.rawValue < rhs.rawValue
@@ -175,5 +182,27 @@ final class Day7Tests: XCTestCase {
         ]
 
         XCTAssertEqual(result, expectedHands)
+    }
+
+    func test_sortHands_returnsWeakestHandsFirst() {
+        let input = [
+            Hand(type: .twoPair, cards: [13, 10, 11, 11, 10], bid: 220),
+            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765),
+            Hand(type: .threeOfAKind, cards: [10, 5, 5, 11, 5], bid: 684),
+            Hand(type: .fullHouse, cards: [12, 12, 12, 11, 14], bid: 567),
+            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28)
+        ]
+
+        let result = input.sorted()
+
+        let expectedResult = [
+            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765),
+            Hand(type: .twoPair, cards: [13, 10, 11, 11, 10], bid: 220),
+            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28),
+            Hand(type: .threeOfAKind, cards: [10, 5, 5, 11, 5], bid: 684),
+            Hand(type: .fullHouse, cards: [12, 12, 12, 11, 14], bid: 567),
+        ]
+
+        XCTAssertEqual(result, expectedResult)
     }
 }
