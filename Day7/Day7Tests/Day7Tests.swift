@@ -11,10 +11,11 @@ struct Hand: Equatable, Comparable {
     let type: HandType
     let cards: [Int]
     let bid: Int
+    let sortString: String
 
     static func < (lhs: Hand, rhs: Hand) -> Bool {
         if lhs.type == rhs.type {
-            return lhs.cards.map(String.init).joined() < rhs.cards.map(String.init).joined()
+            return lhs.sortString < rhs.sortString
         }
         return lhs.type < rhs.type
     }
@@ -44,12 +45,14 @@ enum Part1 {
     static func parseHand(from input: String) -> Hand? {
         let cardsAndBid = input.components(separatedBy: .whitespaces)
 
-        let cards = mapToInt(cardsAndBid[0])
+        let rawCards = cardsAndBid[0]
+        let cards = mapToInt(rawCards)
         let type = handType(for: cards)
+        let sortString = convertToSortString(rawCards)
 
         guard let bid = Int(cardsAndBid[1]) else { return nil }
 
-        return Hand(type: type, cards: cards, bid: bid)
+        return Hand(type: type, cards: cards, bid: bid, sortString: sortString)
     }
 
     private static func mapToInt(_ input: String) -> [Int] {
@@ -61,6 +64,15 @@ enum Part1 {
             .map { $0.replacingOccurrences(of: "J", with: "11") }
             .map { $0.replacingOccurrences(of: "T", with: "10") }
             .compactMap(Int.init)
+    }
+
+    private static func convertToSortString(_ input: String) -> String {
+        input
+            .replacingOccurrences(of: "A", with: "Z")
+            .replacingOccurrences(of: "K", with: "Y")
+            .replacingOccurrences(of: "Q", with: "X")
+            .replacingOccurrences(of: "J", with: "W")
+            .replacingOccurrences(of: "T", with: "V")
     }
 
     private static func handType(for cards: [Int]) -> HandType {
@@ -146,13 +158,13 @@ final class Day7Tests: XCTestCase {
         let result = input.map(Part1.parseHand)
 
         let expectedHands = [
-            Hand(type: .highCard, cards: [14, 13, 12, 11, 10], bid: 123),
-            Hand(type: .onePair, cards: [1, 1, 2, 3, 4], bid: 234),
-            Hand(type: .twoPair, cards: [1, 1, 2, 3, 3], bid: 345),
-            Hand(type: .threeOfAKind, cards: [1, 2, 3, 3, 3], bid: 456),
-            Hand(type: .fullHouse, cards: [1, 1, 1, 2, 2], bid: 567),
-            Hand(type: .fourOfAKind, cards: [1, 2, 2, 2, 2], bid: 678),
-            Hand(type: .fiveOfAKind, cards: [1, 1, 1, 1, 1], bid: 789)
+            Hand(type: .highCard, cards: [14, 13, 12, 11, 10], bid: 123, sortString: "ZYXWV"),
+            Hand(type: .onePair, cards: [1, 1, 2, 3, 4], bid: 234, sortString: "11234"),
+            Hand(type: .twoPair, cards: [1, 1, 2, 3, 3], bid: 345, sortString: "11233"),
+            Hand(type: .threeOfAKind, cards: [1, 2, 3, 3, 3], bid: 456, sortString: "12333"),
+            Hand(type: .fullHouse, cards: [1, 1, 1, 2, 2], bid: 567, sortString: "11122"),
+            Hand(type: .fourOfAKind, cards: [1, 2, 2, 2, 2], bid: 678, sortString: "12222"),
+            Hand(type: .fiveOfAKind, cards: [1, 1, 1, 1, 1], bid: 789, sortString: "11111")
         ]
 
         XCTAssertEqual(result, expectedHands)
@@ -172,13 +184,13 @@ final class Day7Tests: XCTestCase {
         let result = Part1.parseHands(from: input)
 
         let expectedHands = [
-            Hand(type: .highCard, cards: [14, 13, 12, 11, 10], bid: 123),
-            Hand(type: .onePair, cards: [1, 1, 2, 3, 4], bid: 234),
-            Hand(type: .twoPair, cards: [1, 1, 2, 3, 3], bid: 345),
-            Hand(type: .threeOfAKind, cards: [1, 2, 3, 3, 3], bid: 456),
-            Hand(type: .fullHouse, cards: [1, 1, 1, 2, 2], bid: 567),
-            Hand(type: .fourOfAKind, cards: [1, 2, 2, 2, 2], bid: 678),
-            Hand(type: .fiveOfAKind, cards: [1, 1, 1, 1, 1], bid: 789)
+            Hand(type: .highCard, cards: [14, 13, 12, 11, 10], bid: 123, sortString: "ZYXWV"),
+            Hand(type: .onePair, cards: [1, 1, 2, 3, 4], bid: 234, sortString: "11234"),
+            Hand(type: .twoPair, cards: [1, 1, 2, 3, 3], bid: 345, sortString: "11233"),
+            Hand(type: .threeOfAKind, cards: [1, 2, 3, 3, 3], bid: 456, sortString: "12333"),
+            Hand(type: .fullHouse, cards: [1, 1, 1, 2, 2], bid: 567, sortString: "11122"),
+            Hand(type: .fourOfAKind, cards: [1, 2, 2, 2, 2], bid: 678, sortString: "12222"),
+            Hand(type: .fiveOfAKind, cards: [1, 1, 1, 1, 1], bid: 789, sortString: "11111")
         ]
 
         XCTAssertEqual(result, expectedHands)
@@ -186,21 +198,21 @@ final class Day7Tests: XCTestCase {
 
     func test_sortHands_returnsWeakestHandsFirst() {
         let input = [
-            Hand(type: .twoPair, cards: [13, 10, 11, 11, 10], bid: 220),
-            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765),
-            Hand(type: .threeOfAKind, cards: [10, 5, 5, 11, 5], bid: 684),
-            Hand(type: .fullHouse, cards: [12, 12, 12, 11, 14], bid: 567),
-            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28)
+            Hand(type: .twoPair, cards: [13, 10, 11, 11, 10], bid: 220, sortString: "YVWWV"),
+            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765, sortString: "32V3Y"),
+            Hand(type: .threeOfAKind, cards: [10, 5, 5, 11, 5], bid: 684, sortString: "V55W5"),
+            Hand(type: .fullHouse, cards: [12, 12, 12, 11, 14], bid: 567, sortString: "XXXWZ"),
+            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28, sortString: "YY677")
         ]
 
         let result = input.sorted()
 
         let expectedResult = [
-            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765),
-            Hand(type: .twoPair, cards: [13, 10, 11, 11, 10], bid: 220),
-            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28),
-            Hand(type: .threeOfAKind, cards: [10, 5, 5, 11, 5], bid: 684),
-            Hand(type: .fullHouse, cards: [12, 12, 12, 11, 14], bid: 567),
+            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765, sortString: "32V3Y"),
+            Hand(type: .twoPair, cards: [13, 10, 11, 11, 10], bid: 220, sortString: "YVWWV"),
+            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28, sortString: "YY677"),
+            Hand(type: .threeOfAKind, cards: [10, 5, 5, 11, 5], bid: 684, sortString: "V55W5"),
+            Hand(type: .fullHouse, cards: [12, 12, 12, 11, 14], bid: 567, sortString: "XXXWZ")
         ]
 
         XCTAssertEqual(result, expectedResult)
