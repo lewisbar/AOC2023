@@ -36,6 +36,21 @@ enum HandType: Int, Comparable {
 }
 
 enum Part1 {
+    static func totalWinnings(from hands: [Hand]) -> Int {
+        let sortedHands = hands.sorted()
+        var winnings = 0
+
+        for (index, hand) in sortedHands.enumerated() {
+            winnings += hand.bid * (index + 1)
+            print("Hand", hand.type)
+            print("Cards", hand.cards)
+            print("Bid", hand.bid)
+            print("Rank", index + 1)
+        }
+
+        return winnings
+    }
+
     static func parseHands(from input: String) -> [Hand] {
         input
             .components(separatedBy: .newlines)
@@ -216,5 +231,19 @@ final class Day7Tests: XCTestCase {
         ]
 
         XCTAssertEqual(result, expectedResult)
+    }
+
+    func test_totalWinnings_returnsSolution() {
+        let input = [
+            Hand(type: .twoPair, cards: [13, 10, 11, 11, 10], bid: 220, sortString: "YVWWV"),
+            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765, sortString: "32V3Y"),
+            Hand(type: .threeOfAKind, cards: [10, 5, 5, 11, 5], bid: 684, sortString: "V55W5"),
+            Hand(type: .threeOfAKind, cards: [12, 12, 12, 11, 14], bid: 483, sortString: "XXXWZ"),
+            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28, sortString: "YY677")
+        ]
+
+        let result = Part1.totalWinnings(from: input)
+
+        XCTAssertEqual(result, 6440)
     }
 }
