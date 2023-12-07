@@ -36,6 +36,11 @@ enum HandType: Int, Comparable {
 }
 
 public enum Part1 {
+    public static func totalWinnings(from input: String) -> Int {
+        let hands = parseHands(from: input)
+        return totalWinnings(from: hands)
+    }
+
     static func totalWinnings(from hands: [Hand]) -> Int {
         let sortedHands = hands.sorted()
         var winnings = 0

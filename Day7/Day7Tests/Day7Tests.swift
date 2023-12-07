@@ -96,4 +96,18 @@ final class Day7Tests: XCTestCase {
 
         XCTAssertEqual(result, 6440)
     }
+
+    func test_totalWinningsFromInput_returnsSolution() {
+        let input = """
+        32T3K 765
+        T55J5 684
+        KK677 28
+        KTJJT 220
+        QQQJA 483
+        """
+
+        let result = Part1.totalWinnings(from: input)
+
+        XCTAssertEqual(result, 6440)
+    }
 }
