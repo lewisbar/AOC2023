@@ -120,12 +120,13 @@ final class Day7Tests: XCTestCase {
         let input = [
             [1, 1, 11, 1, 1],
             [1, 1, 2, 1, 1],
-            [11, 1, 11, 11, 11]
+            [11, 1, 11, 11, 11],
+            [11, 11, 11, 11, 11]
         ]
 
         let result = input.map(Part2.Evaluator.handIsFiveOfAKind)
 
-        XCTAssertEqual(result, [true, false, true])
+        XCTAssertEqual(result, [true, false, true, true])
     }
 
     func test_part2Evaluator_handIsFourOfAKind_returnsCorrectAnswerIncludingJokers() {
