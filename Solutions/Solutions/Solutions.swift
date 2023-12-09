@@ -133,7 +133,9 @@ enum Solutions {
         }
 
         static var part2: String {
-            "No solution yet"
+            let input = Day7Input.input
+            let result = Day7.Part2.totalWinnings(from: input)
+            return String(result)
         }
     }
 }
