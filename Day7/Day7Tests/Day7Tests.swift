@@ -9,6 +9,9 @@ import XCTest
 @testable import Day7
 
 final class Day7Tests: XCTestCase {
+
+    // MARK: - Part 1
+
     func test_parseHand_returnsHand() {
         let input = [
             "AKQJT 123",
@@ -20,7 +23,7 @@ final class Day7Tests: XCTestCase {
             "11111 789"
         ]
 
-        let result = input.map(Part1.parseHand)
+        let result = input.map { Part1.parseHand(from: $0) }
 
         let expectedHands = [
             Hand(type: .highCard, cards: [14, 13, 12, 11, 10], bid: 123, sortString: "ZYXWV"),
@@ -109,5 +112,116 @@ final class Day7Tests: XCTestCase {
         let result = Part1.totalWinnings(from: input)
 
         XCTAssertEqual(result, 6440)
+    }
+
+    // MARK: - Part 2
+
+    func test_part2Evaluator_handIsFiveOfAKind_returnsCorrectAnswerIncludingJokers() {
+        let input = [
+            [1, 1, 11, 1, 1],
+            [1, 1, 2, 1, 1],
+            [11, 1, 11, 11, 11]
+        ]
+
+        let result = input.map(Part2.Evaluator.handIsFiveOfAKind)
+
+        XCTAssertEqual(result, [true, false, true])
+    }
+
+    func test_part2Evaluator_handIsFourOfAKind_returnsCorrectAnswerIncludingJokers() {
+        let input = [
+            [1, 1, 11, 2, 1],
+            [11, 11, 11, 2, 1],
+            [1, 2, 3, 11, 11]
+        ]
+
+        let result = input.map(Part2.Evaluator.handIsFourOfAKind)
+
+        XCTAssertEqual(result, [true, true, false])
+    }
+
+    func test_part2Evaluator_handIsThreeOfAKind_returnsCorrectAnswerIncludingJokers() {
+        let input = [
+            [1, 1, 11, 2, 3],
+            [11, 11, 1, 2, 3],
+            [1, 11, 2, 3, 4]
+        ]
+
+        let result = input.map(Part2.Evaluator.handHasThreeOfAKind)
+
+        XCTAssertEqual(result, [true, true, false])
+    }
+
+    func test_part2Evaluator_handHasExactlyOnePair_returnsCorrectAnswerIncludingJokers() {
+        let input = [
+            [1, 11, 2, 3, 4],
+            [11, 2, 3, 4, 5],
+            [11, 2, 3, 3, 4]
+        ]
+
+        let result = input.map(Part2.Evaluator.handHasExactlyOnePair)
+
+        XCTAssertEqual(result, [true, true, false])
+    }
+
+    func test_part2Evaluator_handIsTwoPair_returnsCorrectAnswerIncludingJokers() {
+        let input = [
+            [1, 1, 11, 2, 3],
+            [11, 1, 2, 3, 3],
+            [1, 2, 2, 3, 11],
+            [1, 2, 11, 3, 4]
+        ]
+
+        let result = input.map(Part2.Evaluator.handIsTwoPair)
+
+        XCTAssertEqual(result, [true, true, true, false])
+    }
+
+    func test_part2Evaluator_handIsFullHouse_returnsCorrectAnswerIncludingJokers() {
+        let input = [
+            [1, 1, 11, 2, 2],
+            [11, 2, 1, 2, 1],
+            [1, 11, 1, 2, 3]
+        ]
+
+        let result = input.map(Part2.Evaluator.handIsFullHouse)
+
+        XCTAssertEqual(result, [true, true, false])
+    }
+
+    func test_part2_parseHands_returnsListOfHands() {
+        let input = """
+        32T3K 765
+        T55J5 684
+        KK677 28
+        KTJJT 220
+        QQQJA 483
+        """
+
+        let result = Part2.parseHands(from: input)
+
+        let expectedResult = [
+            Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765, sortString: "32V3Y"),
+            Hand(type: .fourOfAKind, cards: [10, 5, 5, 1, 5], bid: 684, sortString: "V55W5"),
+            Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28, sortString: "YY677"),
+            Hand(type: .fourOfAKind, cards: [13, 10, 1, 1, 10], bid: 220, sortString: "YVWWV"),
+            Hand(type: .fourOfAKind, cards: [12, 12, 12, 1, 14], bid: 483, sortString: "XXXWZ")
+        ]
+
+        XCTAssertEqual(result, expectedResult)
+    }
+
+    func test_part2TotalWinnings_returnsCorrectResultFromInput() {
+        let input = """
+        32T3K 765
+        T55J5 684
+        KK677 28
+        KTJJT 220
+        QQQJA 483
+        """
+
+        let result = Part2.totalWinnings(from: input)
+
+        XCTAssertEqual(result, 5905)
     }
 }

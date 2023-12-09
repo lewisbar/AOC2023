@@ -35,6 +35,15 @@ enum HandType: Int, Comparable {
     }
 }
 
+protocol HandEvaluator {
+    static func handIsFiveOfAKind(_ cards: [Int]) -> Bool
+    static func handIsFourOfAKind(_ cards: [Int]) -> Bool
+    static func handIsFullHouse(_ cards: [Int]) -> Bool
+    static func handHasThreeOfAKind(_ cards: [Int]) -> Bool
+    static func handIsTwoPair(_ cards: [Int]) -> Bool
+    static func handHasExactlyOnePair(_ cards: [Int]) -> Bool
+}
+
 public enum Part1 {
     public static func totalWinnings(from input: String) -> Int {
         let hands = parseHands(from: input)
@@ -55,15 +64,15 @@ public enum Part1 {
     static func parseHands(from input: String) -> [Hand] {
         input
             .components(separatedBy: .newlines)
-            .compactMap(parseHand)
+            .compactMap { parseHand(from: $0) }
     }
 
-    static func parseHand(from input: String) -> Hand? {
+    static func parseHand(from input: String, Evaluator: HandEvaluator.Type = Evaluator.self) -> Hand? {
         let cardsAndBid = input.components(separatedBy: .whitespaces)
 
         let rawCards = cardsAndBid[0]
         let cards = mapToInt(rawCards)
-        let type = handType(for: cards)
+        let type = handType(for: cards, Evaluator: Evaluator)
         let sortString = convertToSortString(rawCards)
 
         guard let bid = Int(cardsAndBid[1]) else { return nil }
@@ -91,70 +100,165 @@ public enum Part1 {
             .replacingOccurrences(of: "T", with: "V")
     }
 
-    private static func handType(for cards: [Int]) -> HandType {
-        if handIsFiveOfAKind(cards) { return .fiveOfAKind }
-        if handIsFourOfAKind(cards) { return .fourOfAKind }
-        if handIsFullHouse(cards) { return .fullHouse }
-        if handHasThreeOfAKind(cards) { return .threeOfAKind }
-        if handIsTwoPair(cards) { return .twoPair }
-        if handHasExactlyOnePair(cards) { return .onePair }
+    private static func handType(for cards: [Int], Evaluator: HandEvaluator.Type) -> HandType {
+        if Evaluator.handIsFiveOfAKind(cards) { return .fiveOfAKind }
+        if Evaluator.handIsFourOfAKind(cards) { return .fourOfAKind }
+        if Evaluator.handIsFullHouse(cards) { return .fullHouse }
+        if Evaluator.handHasThreeOfAKind(cards) { return .threeOfAKind }
+        if Evaluator.handIsTwoPair(cards) { return .twoPair }
+        if Evaluator.handHasExactlyOnePair(cards) { return .onePair }
         return .highCard
     }
 
-    private static func handIsFiveOfAKind(_ cards: [Int]) -> Bool {
-        cards.allSatisfy { $0 == cards[0] }
-    }
-
-    private static func handIsFourOfAKind(_ cards: [Int]) -> Bool {
-        maxEqualCards(in: cards) == 4
-    }
-
-    private static func handIsFullHouse(_ cards: [Int]) -> Bool {
-        handHasThreeOfAKind(cards) && handHasExactlyOnePair(cards)
-    }
-
-    private static func handHasThreeOfAKind(_ cards: [Int]) -> Bool {
-        maxEqualCards(in: cards) == 3
-    }
-
-    private static func handIsTwoPair(_ cards: [Int]) -> Bool {
-        var equalCardCount = 1
-        var pairedCardsCount = 0
-
-        for card in cards {
-            let equals = cards.filter { $0 == card }
-            if equals.count == 2 {
-                pairedCardsCount += 1
-            }
+    enum Evaluator: HandEvaluator {
+        static func handIsFiveOfAKind(_ cards: [Int]) -> Bool {
+            cards.allSatisfy { $0 == cards[0] }
         }
 
-        return (pairedCardsCount / 2) == 2
-    }
-
-    private static func handHasExactlyOnePair(_ cards: [Int]) -> Bool {
-        var equalCardCount = 1
-        var pairedCardsCount = 0
-
-        for card in cards {
-            let equals = cards.filter { $0 == card }
-            if equals.count == 2 {
-                pairedCardsCount += 1
-            }
+        static func handIsFourOfAKind(_ cards: [Int]) -> Bool {
+            maxEqualCards(in: cards) == 4
         }
 
-        return (pairedCardsCount / 2) == 1
-    }
-
-    private static func maxEqualCards(in cards: [Int]) -> Int {
-        var equalCardCount = 1
-
-        for card in cards {
-            let equals = cards.filter { $0 == card }
-            if equals.count > equalCardCount {
-                equalCardCount = equals.count
-            }
+        static func handIsFullHouse(_ cards: [Int]) -> Bool {
+            handHasThreeOfAKind(cards) && handHasExactlyOnePair(cards)
         }
 
-        return equalCardCount
+        static func handHasThreeOfAKind(_ cards: [Int]) -> Bool {
+            maxEqualCards(in: cards) == 3
+        }
+
+        static func handIsTwoPair(_ cards: [Int]) -> Bool {
+            var pairedCardsCount = 0
+
+            for card in cards {
+                let equals = cards.filter { $0 == card }
+                if equals.count == 2 {
+                    pairedCardsCount += 1
+                }
+            }
+
+            return (pairedCardsCount / 2) == 2
+        }
+
+        static func handHasExactlyOnePair(_ cards: [Int]) -> Bool {
+            var pairedCardsCount = 0
+
+            for card in cards {
+                let equals = cards.filter { $0 == card }
+                if equals.count == 2 {
+                    pairedCardsCount += 1
+                }
+            }
+
+            return (pairedCardsCount / 2) == 1
+        }
+
+        static func maxEqualCards(in cards: [Int]) -> Int {
+            var equalCardCount = 1
+
+            for card in cards {
+                let equals = cards.filter { $0 == card }
+                if equals.count > equalCardCount {
+                    equalCardCount = equals.count
+                }
+            }
+
+            return equalCardCount
+        }
+    }
+}
+
+public enum Part2 {
+    public static func totalWinnings(from input: String) -> Int {
+        let hands = parseHands(from: input)
+        return Part1.totalWinnings(from: hands)
+    }
+
+    static func parseHands(from input: String) -> [Hand] {
+        input
+            .components(separatedBy: .newlines)
+            .compactMap { Part1.parseHand(from: $0, Evaluator: Evaluator.self) }
+            .map {
+                Hand(
+                    type: $0.type,
+                    cards: $0.cards.replacingElevensWithOnes(),
+                    bid: $0.bid,
+                    sortString: $0.sortString
+                )
+            }
+    }
+
+    enum Evaluator: HandEvaluator {
+        static func handIsFiveOfAKind(_ cards: [Int]) -> Bool {
+            let cardsWithoutJokers = cards.filter { $0 != 11 }
+            return cardsWithoutJokers.allSatisfy { $0 == cardsWithoutJokers[0] }
+        }
+        
+        static func handIsFourOfAKind(_ cards: [Int]) -> Bool {
+            let cardsWithoutJokers = cards.filter { $0 != 11 }
+            let numberOfJokers = cards.count - cardsWithoutJokers.count
+            return Part1.Evaluator.maxEqualCards(in: cardsWithoutJokers) + numberOfJokers == 4
+        }
+        
+        static func handIsFullHouse(_ cards: [Int]) -> Bool {
+            let cardsWithoutJokers = cards.filter { $0 != 11 }
+            let numberOfJokers = cards.count - cardsWithoutJokers.count
+            let group1 = cardsWithoutJokers.filter { $0 == cardsWithoutJokers[0] }
+            let group2 = cardsWithoutJokers.filter { $0 != cardsWithoutJokers[0] }
+            guard group2.allSatisfy({ $0 == group2[0] }) else { return false }
+
+            if group1.count == 3 && group2.count + numberOfJokers == 2 {
+                return true
+            }
+            if group2.count == 3 && group1.count + numberOfJokers == 2 {
+                return true
+            }
+            if group1.count == 2 && group2.count + numberOfJokers == 3 {
+                return true
+            }
+            if group2.count == 2 && group1.count + numberOfJokers == 3 {
+                return true
+            }
+            return false
+        }
+        
+        static func handHasThreeOfAKind(_ cards: [Int]) -> Bool {
+            let cardsWithoutJokers = cards.filter { $0 != 11 }
+            let numberOfJokers = cards.count - cardsWithoutJokers.count
+            return Part1.Evaluator.maxEqualCards(in: cardsWithoutJokers) + numberOfJokers == 3
+        }
+        
+        static func handIsTwoPair(_ cards: [Int]) -> Bool {
+            numberOfPairs(in: cards) == 2
+        }
+        
+        static func handHasExactlyOnePair(_ cards: [Int]) -> Bool {
+            numberOfPairs(in: cards) == 1
+        }
+
+        private static func numberOfPairs(in cards: [Int]) -> Int {
+            let cardsWithoutJokers = cards.filter { $0 != 11 }
+            var numberOfJokers = cards.count - cardsWithoutJokers.count
+
+            var pairedCardsCount = 0
+
+            for card in cardsWithoutJokers {
+                let equals = cardsWithoutJokers.filter { $0 == card }
+                if equals.count == 2 {
+                    pairedCardsCount += 1
+                } else if equals.count == 1 && numberOfJokers > 0 {
+                    pairedCardsCount += 2
+                    numberOfJokers -= 1
+                }
+            }
+
+            return (pairedCardsCount / 2)
+        }
+    }
+}
+
+private extension Array where Element == Int {
+    func replacingElevensWithOnes() -> Array {
+        map { $0 == 11 ? 1 : $0 }
     }
 }
