@@ -178,7 +178,7 @@ public enum Part2 {
                     type: $0.type,
                     cards: $0.cards.replacingElevensWithOnes(),
                     bid: $0.bid,
-                    sortString: $0.sortString
+                    sortString: $0.sortString.replacingOccurrences(of: "W", with: "1")
                 )
             }
     }

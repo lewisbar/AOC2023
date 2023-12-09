@@ -203,10 +203,10 @@ final class Day7Tests: XCTestCase {
 
         let expectedResult = [
             Hand(type: .onePair, cards: [3, 2, 10, 3, 13], bid: 765, sortString: "32V3Y"),
-            Hand(type: .fourOfAKind, cards: [10, 5, 5, 1, 5], bid: 684, sortString: "V55W5"),
+            Hand(type: .fourOfAKind, cards: [10, 5, 5, 1, 5], bid: 684, sortString: "V5515"),
             Hand(type: .twoPair, cards: [13, 13, 6, 7, 7], bid: 28, sortString: "YY677"),
-            Hand(type: .fourOfAKind, cards: [13, 10, 1, 1, 10], bid: 220, sortString: "YVWWV"),
-            Hand(type: .fourOfAKind, cards: [12, 12, 12, 1, 14], bid: 483, sortString: "XXXWZ")
+            Hand(type: .fourOfAKind, cards: [13, 10, 1, 1, 10], bid: 220, sortString: "YV11V"),
+            Hand(type: .fourOfAKind, cards: [12, 12, 12, 1, 14], bid: 483, sortString: "XXX1Z")
         ]
 
         XCTAssertEqual(result, expectedResult)
