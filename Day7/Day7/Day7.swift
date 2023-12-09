@@ -128,19 +128,14 @@ public enum Part1 {
         }
 
         static func handIsTwoPair(_ cards: [Int]) -> Bool {
-            var pairedCardsCount = 0
-
-            for card in cards {
-                let equals = cards.filter { $0 == card }
-                if equals.count == 2 {
-                    pairedCardsCount += 1
-                }
-            }
-
-            return (pairedCardsCount / 2) == 2
+            numberOfPairs(in: cards) == 2
         }
 
         static func handHasExactlyOnePair(_ cards: [Int]) -> Bool {
+            numberOfPairs(in: cards) == 1
+        }
+
+        private static func numberOfPairs(in cards: [Int]) -> Int {
             var pairedCardsCount = 0
 
             for card in cards {
@@ -150,7 +145,7 @@ public enum Part1 {
                 }
             }
 
-            return (pairedCardsCount / 2) == 1
+            return (pairedCardsCount / 2)
         }
 
         static func maxEqualCards(in cards: [Int]) -> Int {
